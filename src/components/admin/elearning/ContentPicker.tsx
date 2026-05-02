@@ -87,7 +87,7 @@ export default function ContentPicker({ isOpen, onClose, onSelect }: ContentPick
                             placeholder="タイトルで検索..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 text-sm font-bold border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500"
+                            className="w-full pl-10 pr-4 py-2 text-sm font-bold border border-slate-200 rounded-lg focus:outline-none focus:border-orange-400"
                         />
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export default function ContentPicker({ isOpen, onClose, onSelect }: ContentPick
                 <div className="flex-1 overflow-y-auto p-2">
                     {isLoading ? (
                         <div className="flex items-center justify-center py-16">
-                            <Loader2 size={24} className="animate-spin text-blue-500" />
+                            <Loader2 size={24} className="animate-spin text-orange-400" />
                         </div>
                     ) : filteredContent.length === 0 ? (
                         <div className="text-center py-10 text-slate-400 font-bold">
@@ -111,11 +111,11 @@ export default function ContentPicker({ isOpen, onClose, onSelect }: ContentPick
                                         key={item.id}
                                         onClick={() => toggleSelection(item.id)}
                                         className={`flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-colors border-2
-                                            ${isSelected ? 'bg-blue-50 border-blue-200' : 'bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-100'}
+                                            ${isSelected ? 'bg-orange-50 border-orange-100' : 'bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-100'}
                                         `}
                                     >
                                         <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors
-                                            ${isSelected ? 'bg-blue-500 border-blue-500 text-white' : 'border-slate-300 bg-white'}
+                                            ${isSelected ? 'bg-orange-400 border-orange-400 text-white' : 'border-slate-300 bg-white'}
                                         `}>
                                             {isSelected && <Check size={14} strokeWidth={4} />}
                                         </div>
@@ -127,7 +127,7 @@ export default function ContentPicker({ isOpen, onClose, onSelect }: ContentPick
                                         </div>
 
                                         <div className="flex-1 min-w-0">
-                                            <p className={`font-bold text-sm truncate ${isSelected ? 'text-blue-900' : 'text-slate-700'}`}>
+                                            <p className={`font-bold text-sm truncate ${isSelected ? 'text-orange-800' : 'text-slate-700'}`}>
                                                 {item.title}
                                             </p>
                                             <div className="flex items-center gap-2 text-xs text-slate-400">
@@ -155,7 +155,7 @@ export default function ContentPicker({ isOpen, onClose, onSelect }: ContentPick
                             disabled={selectedIds.length === 0}
                             className={`px-6 py-2 rounded-lg font-bold transition-all shadow-lg
                                 ${selectedIds.length > 0
-                                    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
+                                    ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-orange-100'
                                     : 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'}
                             `}
                         >

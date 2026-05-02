@@ -5,12 +5,32 @@ import { useAppStore } from '@/lib/appStore';
 import {
     ChevronLeft, FileText, Download, CheckSquare,
     PlayCircle, CheckCircle2, ChevronRight, Menu,
-    Award, XCircle, Lightbulb
+    Award, XCircle, Lightbulb, Monitor, Play as PlayIcon, ExternalLink
 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { getYoutubeId } from '@/utils/youtube';
 import { ElearningService } from '@/services/elearning';
+
+// Convert various Google Slides / presentation URLs to embed URL
+function getSlideEmbedUrl(url?: string): string | null {
+    if (!url) return null;
+    // Already embed
+    if (url.includes('/embed')) return url;
+    // Google Slides
+    const gsMatch = url.match(/docs\.google\.com\/presentation\/d\/([a-zA-Z0-9_-]+)/);
+    if (gsMatch) {
+        return `https://docs.google.com/presentation/d/${gsMatch[1]}/embed?start=false&loop=false&delayms=3000`;
+    }
+    // Canva embed (canva.com/design/.../view?embed)
+    if (url.includes('canva.com')) {
+        const canvaMatch = url.match(/canva\.com\/design\/([^/]+)/);
+        if (canvaMatch) {
+            return url.includes('embed') ? url : `${url}${url.includes('?') ? '&' : '?'}embed`;
+        }
+    }
+    return null;
+}
 
 export default function LessonPlayerPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = use(params);
@@ -32,6 +52,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
     const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
     const [quizSubmitted, setQuizSubmitted] = useState(false);
     const [showCelebration, setShowCelebration] = useState(false);
+    const [activeTab, setActiveTab] = useState<'video' | 'slides'>('video');
 
     // Initial load: Try Store first, then fallback to Service API
     useEffect(() => {
@@ -194,7 +215,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
     if (isLoading) {
         return (
             <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-white p-4">
-                <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4" />
+                <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mb-4" />
                 <p className="font-bold text-slate-400">レッスンを読み込み中...</p>
             </div>
         );
@@ -212,7 +233,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                     </Link>
                     <button
                         onClick={() => window.location.reload()}
-                        className="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold transition-all"
+                        className="bg-orange-500 hover:bg-orange-400 px-6 py-3 rounded-xl font-bold transition-all"
                     >
                         再試行する
                     </button>
@@ -237,6 +258,10 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
         (l.order_index || 0) === (lesson?.order_index || 0) + 1
     );
 
+    const slideEmbedUrl = getSlideEmbedUrl(lesson?.material_url);
+    const hasVideo = !!videoId;
+    const hasSlides = !!slideEmbedUrl;
+
     return (
         <div className="min-h-screen bg-slate-900 flex flex-col">
             {/* Top Navigation */}
@@ -246,7 +271,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                         <ChevronLeft size={24} />
                     </Link>
                     <div>
-                        <span className="text-[10px] font-black uppercase text-blue-400 tracking-widest">{course.title}</span>
+                        <span className="text-[10px] font-black uppercase text-orange-300 tracking-widest">{course.title}</span>
                         <h1 className="text-sm font-bold truncate max-w-[200px] md:max-w-md">{lesson.title}</h1>
                     </div>
                 </div>
@@ -261,9 +286,40 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
             <div className="flex-1 flex overflow-hidden">
                 {/* Main Content Area */}
                 <main className="flex-1 overflow-y-auto bg-slate-950">
-                    <div className="bg-black aspect-video w-full shadow-2xl relative">
+                    {/* Tab switcher: show when both video and slides exist */}
+                    {hasVideo && hasSlides && (
+                        <div className="flex gap-1 px-4 pt-3 bg-slate-900">
+                            <button
+                                onClick={() => setActiveTab('video')}
+                                className={`flex items-center gap-2 px-5 py-2 rounded-xl font-black text-sm transition-all ${activeTab === 'video' ? 'bg-orange-500 text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <PlayIcon size={16} /> 動画
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('slides')}
+                                className={`flex items-center gap-2 px-5 py-2 rounded-xl font-black text-sm transition-all ${activeTab === 'slides' ? 'bg-orange-500 text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                            >
+                                <Monitor size={16} /> スライド
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Video Player — always rendered so YT player DOM ref stays alive */}
+                    <div className={`bg-black aspect-video w-full shadow-2xl relative ${hasSlides && activeTab === 'slides' ? 'hidden' : ''}`}>
                         <div id="youtube-player" className="w-full h-full" />
                     </div>
+
+                    {/* Slide Embed */}
+                    {hasSlides && (activeTab === 'slides' || !hasVideo) && (
+                        <div className="w-full bg-slate-900" style={{ aspectRatio: '16/9' }}>
+                            <iframe
+                                src={slideEmbedUrl!}
+                                className="w-full h-full border-0"
+                                allowFullScreen
+                                allow="fullscreen"
+                            />
+                        </div>
+                    )}
 
                     <div className="max-w-4xl mx-auto p-6 md:p-10 space-y-10 pb-32">
                         {/* Lesson Info */}
@@ -279,7 +335,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                     onClick={handleComplete}
                                     className={`relative px-8 py-4 rounded-2xl font-black transition-all flex items-center gap-2 overflow-hidden ${isLessonCompleted(lesson.id)
                                         ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-900/40'
-                                        : 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-900/40'
+                                        : 'bg-orange-500 text-white hover:bg-orange-400 shadow-lg shadow-orange-800/40'
                                         }`}
                                 >
                                     {isLessonCompleted(lesson.id) ? <CheckCircle2 size={20} /> : null}
@@ -305,9 +361,27 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                             {lesson.material_url && (
                                 <div className="bg-slate-900 rounded-[2rem] p-8 border border-white/5">
                                     <h3 className="text-lg font-black text-white flex items-center gap-2 mb-6">
-                                        <FileText className="text-blue-500" /> 学習資料
+                                        {hasSlides ? <Monitor className="text-orange-400" /> : <FileText className="text-orange-400" />}
+                                        {hasSlides ? '学習スライド' : '学習資料'}
                                     </h3>
                                     <div className="space-y-3">
+                                        {hasSlides && hasVideo && (
+                                            <button
+                                                onClick={() => setActiveTab('slides')}
+                                                className="w-full flex items-center justify-between p-4 bg-orange-500/20 hover:bg-orange-500/30 rounded-2xl transition-all border border-orange-400/30 group"
+                                            >
+                                                <div className="flex items-center gap-3">
+                                                    <div className="bg-orange-400/30 p-2 rounded-lg text-orange-300 group-hover:scale-110 transition-transform">
+                                                        <Monitor size={18} />
+                                                    </div>
+                                                    <div className="text-left">
+                                                        <p className="text-sm font-bold text-white leading-none">スライドで確認する</p>
+                                                        <span className="text-[10px] text-orange-300 font-bold">画面内に埋め込み表示</span>
+                                                    </div>
+                                                </div>
+                                                <PlayIcon size={18} className="text-orange-300" />
+                                            </button>
+                                        )}
                                         <a
                                             href={lesson.material_url}
                                             target="_blank"
@@ -315,12 +389,12 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                             className="flex items-center justify-between p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all border border-white/5 group"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <div className="bg-blue-500/20 p-2 rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
-                                                    <FileText size={18} />
+                                                <div className="bg-white/10 p-2 rounded-lg text-slate-400 group-hover:scale-110 transition-transform">
+                                                    <ExternalLink size={18} />
                                                 </div>
                                                 <div>
-                                                    <p className="text-sm font-bold text-white leading-none">資料を開く</p>
-                                                    <span className="text-[10px] text-slate-500 font-bold">External link</span>
+                                                    <p className="text-sm font-bold text-white leading-none">外部リンクで開く</p>
+                                                    <span className="text-[10px] text-slate-500 font-bold">新しいタブで表示</span>
                                                 </div>
                                             </div>
                                             <Download size={18} className="text-slate-400" />
@@ -383,7 +457,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                                             statusClass = 'bg-white/2 border-white/5 text-slate-600 opacity-50';
                                                         }
                                                     } else if (isSelected) {
-                                                        statusClass = 'bg-blue-500/20 border-blue-500 text-blue-400';
+                                                        statusClass = 'bg-orange-400/20 border-orange-400 text-orange-300';
                                                     }
 
                                                     return (
@@ -401,9 +475,9 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                                 })}
                                             </div>
                                             {quizSubmitted && q.explanation && (
-                                                <div className="p-6 bg-blue-500/10 border border-blue-500/20 rounded-2xl text-xs font-medium text-blue-300 leading-relaxed italic animate-in zoom-in-95 duration-300">
+                                                <div className="p-6 bg-orange-400/10 border border-orange-400/20 rounded-2xl text-xs font-medium text-orange-200 leading-relaxed italic animate-in zoom-in-95 duration-300">
                                                     <div className="flex items-center gap-2 mb-2">
-                                                        <Lightbulb size={14} className="text-blue-400" />
+                                                        <Lightbulb size={14} className="text-orange-300" />
                                                         <span className="font-black uppercase tracking-widest text-[10px]">Explanation</span>
                                                     </div>
                                                     {q.explanation}
@@ -447,18 +521,18 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                 <Link
                                     key={l.id}
                                     href={`/reskill/lesson/${l.id}`}
-                                    className={`flex items-center gap-3 px-6 py-3 hover:bg-white/5 transition-colors group ${String(l.id) === String(id) ? 'bg-blue-600/10 text-blue-400 border-l-4 border-blue-600' : 'text-slate-400'
+                                    className={`flex items-center gap-3 px-6 py-3 hover:bg-white/5 transition-colors group ${String(l.id) === String(id) ? 'bg-orange-500/10 text-orange-300 border-l-4 border-orange-500' : 'text-slate-400'
                                         }`}
                                 >
                                     <div className="shrink-0">
                                         {isLessonCompleted(l.id) ? (
                                             <CheckCircle2 size={18} className="text-emerald-500" />
                                         ) : (
-                                            <PlayCircle size={18} className={String(l.id) === String(id) ? 'text-blue-600' : 'group-hover:text-white'} />
+                                            <PlayCircle size={18} className={String(l.id) === String(id) ? 'text-orange-500' : 'group-hover:text-white'} />
                                         )}
                                     </div>
                                     <div className="min-w-0">
-                                        <p className={`text-xs font-bold leading-snug line-clamp-2 ${String(l.id) === String(id) ? 'text-blue-400' : 'group-hover:text-slate-200'}`}>
+                                        <p className={`text-xs font-bold leading-snug line-clamp-2 ${String(l.id) === String(id) ? 'text-orange-300' : 'group-hover:text-slate-200'}`}>
                                             {l.title}
                                         </p>
                                         <span className="text-[10px] opacity-50">{l.duration}</span>

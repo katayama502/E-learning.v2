@@ -68,7 +68,7 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+                            <span className="bg-gradient-to-r from-orange-500 to-indigo-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
                                 Official Curriculum
                             </span>
                             <span className="text-slate-400 text-xs font-bold flex items-center gap-1">
@@ -88,7 +88,7 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                         <div className="relative w-14 h-14 flex items-center justify-center">
                             <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                                 <path className="text-slate-100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" />
-                                <path className="text-blue-600 drop-shadow-md" strokeDasharray={`${trackProgress}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" />
+                                <path className="text-orange-500 drop-shadow-md" strokeDasharray={`${trackProgress}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" />
                             </svg>
                             <span className="absolute text-sm font-black text-slate-700">{trackProgress}%</span>
                         </div>
@@ -110,7 +110,7 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                     {/* Positioned relative to the flex container content. Left 2rem aligns approximately with Start Node center. Right 2rem with Goal. */}
                     <div className="absolute top-[3.5rem] left-[3rem] right-[3rem] h-1 bg-slate-100 -z-10 rounded-full" />
                     <div
-                        className="absolute top-[3.5rem] left-[3rem] h-1 bg-blue-500 -z-10 rounded-full transition-all duration-1000"
+                        className="absolute top-[3.5rem] left-[3rem] h-1 bg-orange-400 -z-10 rounded-full transition-all duration-1000"
                         style={{ width: `calc(${Math.max(0, trackProgress)}% - 6rem)` }}
                     />
 
@@ -152,12 +152,12 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                                 <div className={`
                                     w-6 h-6 rounded-full border-4 z-10 mb-6 transition-colors duration-500
                                     ${isComplete ? 'bg-white border-emerald-500' :
-                                        isActive ? 'bg-blue-600 border-blue-200 ring-4 ring-blue-100' :
+                                        isActive ? 'bg-orange-500 border-orange-100 ring-4 ring-orange-50' :
                                             'bg-slate-100 border-slate-200'}
                                 `}>
                                     {isActive && (
                                         <span
-                                            className="absolute -inset-1 rounded-full bg-blue-400 opacity-30 pointer-events-none"
+                                            className="absolute -inset-1 rounded-full bg-orange-300 opacity-30 pointer-events-none"
                                             style={{
                                                 animation: 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite'
                                             }}
@@ -185,8 +185,8 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                                     className={`
                                         w-full bg-white rounded-3xl border-2 transition-all cursor-pointer overflow-hidden select-none
                                         ${isLocked ? 'border-slate-300 bg-slate-100 grayscale-[0.8] opacity-100 cursor-not-allowed' :
-                                            isActive ? 'border-blue-500 shadow-xl shadow-blue-500/10 ring-4 ring-blue-500/10' :
-                                                'border-slate-200 shadow-lg shadow-slate-200/50 hover:border-blue-300'}
+                                            isActive ? 'border-orange-400 shadow-xl shadow-orange-400/10 ring-4 ring-orange-400/10' :
+                                                'border-slate-200 shadow-lg shadow-slate-200/50 hover:border-orange-200'}
                                     `}
                                 >
                                     {/* Main Content (Always Visible) - pointer-events-none to ensure clicks go to parent */}
@@ -196,7 +196,7 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                                                 px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider border
                                                 ${isComplete ? 'bg-emerald-100 text-emerald-700 border-emerald-200' :
                                                     isLocked ? 'bg-slate-200 text-slate-500 border-slate-300' :
-                                                        'bg-blue-50 text-blue-600 border-blue-100'}
+                                                        'bg-orange-50 text-orange-500 border-orange-50'}
                                             `}>
                                                 Step {index + 1}
                                             </span>
@@ -218,14 +218,14 @@ export default function TrackRoadmapView({ track, courses, completedLessonIds, o
                                                     <div className="flex items-center gap-2">
                                                         <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                                                             <div
-                                                                className="h-full rounded-full bg-blue-500"
+                                                                className="h-full rounded-full bg-orange-400"
                                                                 style={{ width: `${progress}%` }}
                                                             />
                                                         </div>
-                                                        <span className="text-[10px] font-black text-blue-500">{progress}%</span>
+                                                        <span className="text-[10px] font-black text-orange-400">{progress}%</span>
                                                     </div>
                                                 ) : (
-                                                    <div className={`mt-2 text-xs font-black flex items-center gap-1 ${isComplete ? 'text-emerald-600' : 'text-blue-600'}`}>
+                                                    <div className={`mt-2 text-xs font-black flex items-center gap-1 ${isComplete ? 'text-emerald-600' : 'text-orange-500'}`}>
                                                         {isComplete ? '復習する' : '開始する'} <Play size={12} fill="currentColor" />
                                                     </div>
                                                 )}

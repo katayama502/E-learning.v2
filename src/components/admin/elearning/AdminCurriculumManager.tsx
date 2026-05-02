@@ -105,7 +105,7 @@ function SortableLesson({ lesson, onEdit, onPlay, onRemove }: {
             style={style}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm flex items-center gap-4 mb-2 group hover:border-blue-300 transition-colors relative"
+            className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm flex items-center gap-4 mb-2 group hover:border-orange-200 transition-colors relative"
         >
             <div {...attributes} {...listeners} className="text-slate-400 cursor-grab active:cursor-grabbing p-1">
                 <GripVertical size={16} />
@@ -171,7 +171,7 @@ function SortableLesson({ lesson, onEdit, onPlay, onRemove }: {
                     <p className="font-bold text-sm text-slate-700 truncate">{lesson.title}</p>
                     <button
                         onClick={() => onEdit?.(lesson)}
-                        className="p-1 text-slate-400 hover:text-blue-500 hover:bg-blue-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
+                        className="p-1 text-slate-400 hover:text-orange-400 hover:bg-orange-50 rounded-full transition-colors opacity-0 group-hover:opacity-100"
                         title="Edit Details"
                     >
                         <Pencil size={14} />
@@ -195,7 +195,7 @@ function SortableLesson({ lesson, onEdit, onPlay, onRemove }: {
                     {lesson.videoUrl && (
                         <button
                             onClick={handlePlayPopup}
-                            className="flex items-center gap-1 text-blue-500 hover:underline font-bold text-[10px] hover:bg-blue-50 px-1.5 py-0.5 rounded"
+                            className="flex items-center gap-1 text-orange-400 hover:underline font-bold text-[10px] hover:bg-orange-50 px-1.5 py-0.5 rounded"
                         >
                             <Maximize2 size={10} />
                             POPUP PLAY
@@ -266,7 +266,7 @@ function SortableCurriculum({ curriculum, children, onAddContent, onEditLesson, 
                     <div {...attributes} {...listeners} className="text-slate-400 cursor-grab p-1 hover:bg-slate-200 rounded">
                         <GripVertical size={20} />
                     </div>
-                    <button onClick={() => setIsExpanded(!isExpanded)} className="font-black text-slate-700 text-lg flex items-center gap-2 hover:text-blue-600">
+                    <button onClick={() => setIsExpanded(!isExpanded)} className="font-black text-slate-700 text-lg flex items-center gap-2 hover:text-orange-500">
                         {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
                         {curriculum.title}
                     </button>
@@ -283,7 +283,7 @@ function SortableCurriculum({ curriculum, children, onAddContent, onEditLesson, 
                     </div>
                     <button
                         onClick={onAddContent}
-                        className="w-full py-2 flex items-center justify-center gap-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg border border-dashed border-slate-300 hover:border-blue-300 transition-colors font-bold text-sm"
+                        className="w-full py-2 flex items-center justify-center gap-2 text-slate-500 hover:text-orange-500 hover:bg-orange-50 rounded-lg border border-dashed border-slate-300 hover:border-orange-200 transition-colors font-bold text-sm"
                     >
                         <Plus size={16} /> Add Content from Library
                     </button>
@@ -511,11 +511,11 @@ export default function AdminCurriculumManager({ initialCurriculums, onSave, onE
                 <DragOverlay dropAnimation={dropAnimation}>
                     {activeDragItem ? (
                         activeDragItem.type === 'Curriculum' ? (
-                            <div className="bg-slate-50 p-4 rounded-xl border border-blue-500 shadow-xl opacity-90 w-[300px]">
+                            <div className="bg-slate-50 p-4 rounded-xl border border-orange-400 shadow-xl opacity-90 w-[300px]">
                                 <h3 className="font-black text-slate-800">{activeDragItem.curriculum.title}</h3>
                             </div>
                         ) : (
-                            <div className="bg-white p-3 rounded-lg border border-blue-500 shadow-xl flex items-center gap-3 w-[280px]">
+                            <div className="bg-white p-3 rounded-lg border border-orange-400 shadow-xl flex items-center gap-3 w-[280px]">
                                 <GripVertical size={16} />
                                 <div className="font-bold text-sm text-slate-700">{activeDragItem.lesson.title}</div>
                             </div>

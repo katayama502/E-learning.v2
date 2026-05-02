@@ -116,7 +116,7 @@ export default function InstructorEventsModal({ isOpen, onClose, instructor }: I
                 <div className="overflow-y-auto p-6 bg-slate-50/50 flex-1">
                     {loading ? (
                         <div className="flex justify-center p-10">
-                            <Loader2 className="animate-spin text-blue-600" size={32} />
+                            <Loader2 className="animate-spin text-orange-500" size={32} />
                         </div>
                     ) : events.length === 0 ? (
                         <div className="text-center py-12 text-slate-400">
@@ -129,7 +129,7 @@ export default function InstructorEventsModal({ isOpen, onClose, instructor }: I
                                 <div key={event.id} className="bg-white p-5 rounded-2xl border border-slate-200 hover:shadow-md transition-shadow">
                                     <div className="flex justify-between items-start mb-3">
                                         <div className="flex items-center gap-2">
-                                            <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full ${event.event_type === 'webinar' ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'
+                                            <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full ${event.event_type === 'webinar' ? 'bg-orange-50 text-orange-500' : 'bg-orange-50 text-orange-600'
                                                 }`}>
                                                 {event.event_type === 'webinar' ? 'WEBセミナー' : 'リアルセミナー'}
                                             </span>
@@ -174,7 +174,7 @@ export default function InstructorEventsModal({ isOpen, onClose, instructor }: I
                                         {/* Link to Event Management */}
                                         <Link
                                             href={`/admin/events`} // Ideally query param if supported later
-                                            className="text-xs font-bold text-blue-600 flex items-center gap-1 hover:underline"
+                                            className="text-xs font-bold text-orange-500 flex items-center gap-1 hover:underline"
                                         >
                                             <ExternalLink size={14} /> イベント詳細・参加者管理へ
                                         </Link>

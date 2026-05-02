@@ -154,7 +154,7 @@ export default function EventFormModal({ isOpen, onClose, onSuccess, event }: Ev
                                 required
                                 value={formData.title}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-orange-400/20 outline-none transition-all"
                                 placeholder="例：Webデザイン入門講座"
                             />
                         </div>
@@ -303,7 +303,7 @@ export default function EventFormModal({ isOpen, onClose, onSuccess, event }: Ev
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="px-6 py-3 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors flex items-center gap-2 shadow-lg shadow-blue-200 disabled:opacity-50"
+                            className="px-6 py-3 rounded-xl font-bold text-white bg-orange-500 hover:bg-orange-600 transition-colors flex items-center gap-2 shadow-lg shadow-orange-100 disabled:opacity-50"
                         >
                             {isLoading && <Loader2 size={18} className="animate-spin" />}
                             {event ? '更新する' : '作成する'}

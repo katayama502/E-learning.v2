@@ -79,10 +79,10 @@ export default function SeekerLoginPage() {
     return (
         <div className="min-h-screen grid lg:grid-cols-2 bg-slate-50">
             {/* Visual Area (Left(PC) / Top(Mobile)) */}
-            <div className="relative overflow-hidden bg-blue-600 lg:h-auto min-h-[280px] p-8 lg:p-12 flex flex-col justify-between">
+            <div className="relative overflow-hidden bg-orange-500 lg:h-auto min-h-[280px] p-8 lg:p-12 flex flex-col justify-between">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
-                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-50"></div>
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-orange-400 rounded-full blur-3xl opacity-50"></div>
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-cyan-400 rounded-full blur-3xl opacity-30"></div>
 
                 <div className="relative z-10">
@@ -106,7 +106,7 @@ export default function SeekerLoginPage() {
                             'AIによるキャリアシミュレーション',
                             '学生・求職者向け特別イベント情報'
                         ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 text-blue-100 font-bold">
+                            <div key={i} className="flex items-center gap-3 text-orange-50 font-bold">
                                 <CheckCircle2 className="w-6 h-6 text-cyan-400" />
                                 {item}
                             </div>
@@ -114,7 +114,7 @@ export default function SeekerLoginPage() {
                     </div>
                 </div>
 
-                <div className="relative z-10 text-blue-200 text-sm font-bold hidden lg:block">
+                <div className="relative z-10 text-orange-100 text-sm font-bold hidden lg:block">
                     © 2026 Ehime Base Project. All rights reserved.
                 </div>
             </div>
@@ -123,7 +123,7 @@ export default function SeekerLoginPage() {
             <div className="flex items-center justify-center p-6 sm:p-12 -mt-10 lg:mt-0 relative z-20">
                 <div className="w-full max-w-md space-y-8 bg-white lg:bg-transparent p-8 lg:p-0 rounded-[2rem] lg:rounded-none shadow-xl lg:shadow-none">
                     <div className="text-center space-y-2 lg:text-left">
-                        <div className="lg:hidden w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="lg:hidden w-16 h-16 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                             <User size={32} />
                         </div>
                         <h2 className="text-2xl lg:text-3xl font-black text-slate-800">求職者ログイン</h2>
@@ -139,7 +139,7 @@ export default function SeekerLoginPage() {
                                     required
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl text-slate-800 font-bold outline-none focus:border-blue-500/20 focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-slate-300"
+                                    className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl text-slate-800 font-bold outline-none focus:border-orange-400/20 focus:ring-4 focus:ring-orange-400/10 transition-all placeholder:text-slate-300"
                                     placeholder="name@example.com"
                                 />
                             </div>
@@ -151,7 +151,7 @@ export default function SeekerLoginPage() {
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl text-slate-800 font-bold outline-none focus:border-blue-500/20 focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-slate-300 pr-12"
+                                        className="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl text-slate-800 font-bold outline-none focus:border-orange-400/20 focus:ring-4 focus:ring-orange-400/10 transition-all placeholder:text-slate-300 pr-12"
                                         placeholder="••••••••"
                                     />
                                     <button
@@ -166,7 +166,7 @@ export default function SeekerLoginPage() {
                                     <button
                                         type="button"
                                         onClick={() => router.push('/auth/forgot-password')}
-                                        className="text-xs font-bold text-slate-400 hover:text-blue-600 transition-colors"
+                                        className="text-xs font-bold text-slate-400 hover:text-orange-500 transition-colors"
                                     >
                                         パスワードをお忘れの方はこちら
                                     </button>
@@ -178,7 +178,7 @@ export default function SeekerLoginPage() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full py-4 bg-blue-600 text-white font-black rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-300 hover:-translate-y-0.5 transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
+                                className="w-full py-4 bg-orange-500 text-white font-black rounded-2xl shadow-xl shadow-orange-100 hover:bg-orange-600 hover:shadow-2xl hover:shadow-orange-200 hover:-translate-y-0.5 transition-all active:scale-[0.98] disabled:opacity-70 flex items-center justify-center gap-2 group"
                             >
                                 {loading ? <Loader2 className="animate-spin" /> : 'ログインする'}
                                 {!loading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
@@ -190,7 +190,7 @@ export default function SeekerLoginPage() {
                         <button
                             type="button"
                             onClick={() => router.push('/register/seeker')}
-                            className="text-blue-600 font-black text-sm hover:underline hover:text-blue-700 transition-colors"
+                            className="text-orange-500 font-black text-sm hover:underline hover:text-orange-600 transition-colors"
                         >
                             アカウントをお持ちでない方はこちら
                         </button>

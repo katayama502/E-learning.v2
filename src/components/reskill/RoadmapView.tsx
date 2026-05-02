@@ -29,7 +29,7 @@ export default function RoadmapView({ course, completedLessonIds, onLessonSelect
 
             {/* Start Node */}
             <div className="mb-12 flex flex-col items-center z-10">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-200 ring-4 ring-white">
+                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-orange-100 ring-4 ring-white">
                     <MapPin size={32} strokeWidth={2.5} />
                 </div>
                 <div className="bg-white px-4 py-1 rounded-full shadow-sm mt-3 font-black text-slate-500 text-xs tracking-widest uppercase">
@@ -73,7 +73,7 @@ export default function RoadmapView({ course, completedLessonIds, onLessonSelect
                                         initial={{ height: 0 }}
                                         animate={{ height: locked ? '0%' : '100%' }}
                                         transition={{ duration: 1, delay: index * 0.2 }}
-                                        className="w-full bg-blue-500/30"
+                                        className="w-full bg-orange-400/30"
                                     />
                                 </div>
                             )}
@@ -87,14 +87,14 @@ export default function RoadmapView({ course, completedLessonIds, onLessonSelect
                                     w-full bg-white rounded-3xl p-6 border-2 shadow-xl transition-all relative overflow-hidden
                                     ${locked ? 'border-slate-100 grayscale opacity-80' :
                                         isComplete ? 'border-emerald-400 shadow-emerald-100' :
-                                            'border-blue-500 shadow-blue-200 scale-105 ring-4 ring-blue-50'}
+                                            'border-orange-400 shadow-orange-100 scale-105 ring-4 ring-orange-50'}
                                 `}
                             >
                                 {isActive && (
                                     <div className="absolute top-0 right-0 p-3">
                                         <span className="relative flex h-3 w-3">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-300 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-400"></span>
                                         </span>
                                     </div>
                                 )}
@@ -102,13 +102,13 @@ export default function RoadmapView({ course, completedLessonIds, onLessonSelect
                                 <div className="flex items-start justify-between mb-4">
                                     <div className={`
                                         w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-md
-                                        ${locked ? 'bg-slate-200' : isComplete ? 'bg-emerald-500' : 'bg-blue-600'}
+                                        ${locked ? 'bg-slate-200' : isComplete ? 'bg-emerald-500' : 'bg-orange-500'}
                                     `}>
                                         <span className="font-black text-lg">{index + 1}</span>
                                     </div>
                                     <div className="text-right">
                                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">PROGRESS</span>
-                                        <p className={`font-black text-xl ${isComplete ? 'text-emerald-500' : locked ? 'text-slate-300' : 'text-blue-600'}`}>
+                                        <p className={`font-black text-xl ${isComplete ? 'text-emerald-500' : locked ? 'text-slate-300' : 'text-orange-500'}`}>
                                             {Math.round((completed / totalLessons) * 100)}%
                                         </p>
                                     </div>

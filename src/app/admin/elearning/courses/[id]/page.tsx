@@ -311,7 +311,7 @@ export default function AdminCourseDetailPage() {
                                 type="text"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
-                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors text-slate-900"
+                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors text-slate-900"
                             />
                         </div>
 
@@ -321,8 +321,8 @@ export default function AdminCourseDetailPage() {
                                 <button
                                     onClick={() => toggleTag('Recommended')}
                                     className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors flex items-center gap-1 ${tags.includes('Recommended')
-                                        ? 'bg-blue-600 text-white border-blue-600'
-                                        : 'bg-white text-slate-500 border-slate-200 hover:border-blue-400'
+                                        ? 'bg-orange-500 text-white border-orange-500'
+                                        : 'bg-white text-slate-500 border-slate-200 hover:border-orange-300'
                                         }`}
                                 >
                                     {tags.includes('Recommended') && <CheckCircle2 size={12} />}
@@ -337,7 +337,7 @@ export default function AdminCourseDetailPage() {
                             <textarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors min-h-[100px] text-slate-900"
+                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors min-h-[100px] text-slate-900"
                             />
                         </div>
 
@@ -355,7 +355,7 @@ export default function AdminCourseDetailPage() {
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors text-slate-900 bg-white"
+                                className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors text-slate-900 bg-white"
                             >
                                 {categoryOptions.map(opt => (
                                     <option key={opt} value={opt}>{opt}</option>

@@ -6,37 +6,22 @@ import { usePathname } from 'next/navigation';
 import {
     LayoutDashboard,
     Users,
-    Settings,
     LogOut,
     Menu,
-    Database,
     ShieldCheck,
-    FileText,
     Eye,
     GraduationCap,
-    UserCheck,  // 講師管理用
-    Scroll,     // 監査ログ用
-    Building2,  // 企業管理用
-    Video,      // 動画管理用
-    Calendar,   // イベント管理用
-    ClipboardList, // インタビューシップ用
-    Briefcase   // 短期バイト用
+    Scroll,
+    BookHeart,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/appStore';
 import AppLauncher from '@/components/AppLauncher';
 
 const sidebarItems = [
     { name: 'ダッシュボード', icon: LayoutDashboard, href: '/admin' },
-    { name: 'ユーザー管理', icon: Users, href: '/admin/users' },
-    { name: '企業アカウント', icon: Building2, href: '/admin/company-users' },
-    { name: 'データ管理', icon: Database, href: '/admin/management' },
-    { name: 'リスキル大学', icon: GraduationCap, href: '/admin/elearning' },
-    { name: '企業承認申請', icon: ShieldCheck, href: '/admin/approvals' },
-    { name: '講師管理', icon: UserCheck, href: '/admin/instructors' },
-    { name: 'イベント管理', icon: Calendar, href: '/admin/events' },
-    { name: '組織アカウント発行', icon: Building2, href: '/admin/organizations/register' },
-    { name: 'インタビューシップ', icon: ClipboardList, href: '/admin/interviewship' },
-    { name: '短期バイト', icon: Briefcase, href: '/admin/staffing' },
+    { name: 'アカウント管理', icon: Users, href: '/admin/users' },
+    { name: 'eラーニング管理', icon: GraduationCap, href: '/admin/elearning' },
+    { name: '振り返り管理', icon: BookHeart, href: '/admin/reflections' },
     { name: 'アクションログ', icon: Scroll, href: '/admin/audit' },
 ];
 
@@ -142,8 +127,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <aside className="hidden md:flex flex-col w-64 bg-slate-900 text-white border-r border-slate-800 shrink-0">
                 <div className="p-6 border-b border-slate-800">
                     <h1 className="text-xl font-black tracking-tight flex items-center gap-2">
-                        <ShieldCheck className="text-red-500" />
-                        <span>EIS Admin</span>
+                        <ShieldCheck className="text-orange-300" />
+                        <span>管理画面</span>
                     </h1>
                 </div>
 
@@ -153,7 +138,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             key={item.href}
                             href={item.href}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-bold transition-all ${pathname === item.href || pathname?.startsWith(item.href) && item.href !== '/admin'
-                                ? 'bg-red-500 text-white'
+                                ? 'bg-orange-500 text-white'
                                 : 'text-slate-400 hover:text-white hover:bg-slate-800'
                                 }`}
                         >
@@ -165,12 +150,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
                 <div className="px-4 pb-2">
                     <Link
-                        href="/"
+                        href="/reskill"
                         target="_blank"
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all"
                     >
                         <Eye size={18} />
-                        Ehime Baseを見る
+                        学習ページを見る
                     </Link>
                 </div>
 
@@ -190,7 +175,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="flex-1 flex flex-col min-w-0 h-full">
                 <header className="md:hidden h-16 bg-slate-900/95 text-white flex items-center justify-between px-6 backdrop-blur-md shrink-0">
                     <h1 className="text-lg font-black tracking-tight flex items-center gap-2">
-                        <ShieldCheck className="text-red-500" /> EIS Admin
+                        <ShieldCheck className="text-orange-300" /> 管理画面
                     </h1>
                     <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                         <Menu />
@@ -212,13 +197,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             </Link>
                         ))}
                         <Link
-                            href="/"
+                            href="/reskill"
                             target="_blank"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="flex items-center gap-4 py-3 text-slate-400 font-bold border-b border-slate-800"
                         >
                             <Eye size={20} />
-                            Ehime Baseを見る
+                            学習ページを見る
                         </Link>
                         <button
                             onClick={handleLogout}

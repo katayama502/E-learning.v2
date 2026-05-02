@@ -6,7 +6,8 @@ import {
     PlayCircle, CheckCircle2, BookOpen, Clock,
     TrendingUp, Award, ChevronRight, Layout,
     Zap, Star, ArrowRight, Layers, Play, X, Sparkles, Flame,
-    Calendar, Users, MapPin, MonitorPlay, XCircle
+    Calendar, Users, MapPin, MonitorPlay, XCircle,
+    Map, ExternalLink, Code, Palette, Globe, Bot, Cpu, BookHeart
 } from 'lucide-react';
 import Link from 'next/link';
 import TrackRoadmapView from '@/components/reskill/TrackRoadmapView';
@@ -56,7 +57,7 @@ function RecentlyViewedSection({ lessons, courses, activeTrack }: { lessons: any
         <section>
             <div className="flex items-center justify-between mb-4 mt-12">
                 <h2 className="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
-                    <Clock className="text-blue-500" />
+                    <Clock className="text-orange-400" />
                     最近見たレッスン
                 </h2>
             </div>
@@ -76,7 +77,7 @@ function RecentlyViewedSection({ lessons, courses, activeTrack }: { lessons: any
                     return (
                         <div
                             key={lesson.id}
-                            className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-blue-900/5 transition-all"
+                            className="group bg-white rounded-3xl border border-slate-200 overflow-hidden hover:shadow-xl hover:shadow-orange-800/5 transition-all"
                         >
                             <div className="aspect-video bg-slate-900 relative overflow-hidden">
                                 {isPlaying && youtubeId ? (
@@ -118,8 +119,8 @@ function RecentlyViewedSection({ lessons, courses, activeTrack }: { lessons: any
                                 )}
                             </div>
                             <Link href={`/reskill/lesson/${lesson.id}`} className="block p-5 hover:bg-slate-50 transition-colors">
-                                <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">{module?.title}</span>
-                                <h3 className="text-lg font-black text-slate-800 mt-1 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                                <span className="text-[10px] font-black text-orange-500 uppercase tracking-widest">{module?.title}</span>
+                                <h3 className="text-lg font-black text-slate-800 mt-1 line-clamp-1 group-hover:text-orange-500 transition-colors">
                                     {lesson.title}
                                 </h3>
                             </Link>
@@ -377,7 +378,7 @@ export default function ReskillDashboardPage() {
             <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-100">
+                        <div className="bg-orange-500 p-2 rounded-xl text-white shadow-lg shadow-orange-50">
                             <BookOpen size={24} />
                         </div>
                         <h1 className="text-xl font-black tracking-tighter text-slate-900">リスキル大学</h1>
@@ -403,7 +404,7 @@ export default function ReskillDashboardPage() {
                                 </div>
 
                                 <div className="absolute top-4 left-4">
-                                    <span className="bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg backdrop-blur-md">
+                                    <span className="bg-orange-500 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg backdrop-blur-md">
                                         NEW EVENT
                                     </span>
                                 </div>
@@ -415,16 +416,16 @@ export default function ReskillDashboardPage() {
                                 <div className="absolute bottom-0 left-0 right-0 p-5 text-white flex flex-col justify-end h-full pointer-events-none">
                                     <div className="flex items-center gap-3 text-[10px] font-bold text-white/80 mb-1">
                                         <span className="flex items-center gap-1">
-                                            <Calendar size={12} className="text-blue-400" />
+                                            <Calendar size={12} className="text-orange-300" />
                                             {new Date(upcomingEvent.start_at).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', weekday: 'short' })}
                                         </span>
                                         <span className="flex items-center gap-1">
-                                            <MapPin size={12} className="text-blue-400" />
+                                            <MapPin size={12} className="text-orange-300" />
                                             {upcomingEvent.event_type === 'webinar' ? 'オンライン' : upcomingEvent.location}
                                         </span>
                                     </div>
 
-                                    <h3 className="text-lg font-black leading-tight line-clamp-2 mb-2 group-hover:text-blue-200 transition-colors text-shadow-sm">
+                                    <h3 className="text-lg font-black leading-tight line-clamp-2 mb-2 group-hover:text-orange-100 transition-colors text-shadow-sm">
                                         {upcomingEvent.title}
                                     </h3>
 
@@ -442,7 +443,7 @@ export default function ReskillDashboardPage() {
                             </Link>
                         ) : (
                             <div className="p-6 flex flex-col justify-between h-full relative">
-                                <div className="absolute right-[-10%] top-[-10%] text-blue-50 opacity-50 group-hover:scale-110 transition-transform">
+                                <div className="absolute right-[-10%] top-[-10%] text-orange-50 opacity-50 group-hover:scale-110 transition-transform">
                                     <Award size={140} />
                                 </div>
                                 <div className="relative z-10">
@@ -453,7 +454,7 @@ export default function ReskillDashboardPage() {
                                     </div>
                                     <div className="mt-4 h-3 bg-slate-100 rounded-full overflow-hidden">
                                         <div
-                                            className="h-full bg-blue-600 rounded-full transition-all duration-1000"
+                                            className="h-full bg-orange-500 rounded-full transition-all duration-1000"
                                             style={{ width: `${overallProgress}%` }}
                                         />
                                     </div>
@@ -463,7 +464,7 @@ export default function ReskillDashboardPage() {
                     </div>
 
                     {/* Middle: Currently Learning */}
-                    <div className="bg-slate-900 p-6 rounded-[2rem] shadow-xl relative overflow-hidden group text-white hover:shadow-2xl hover:shadow-blue-900/20 transition-all">
+                    <div className="bg-slate-900 p-6 rounded-[2rem] shadow-xl relative overflow-hidden group text-white hover:shadow-2xl hover:shadow-orange-800/20 transition-all">
                         <div className="absolute right-[-10%] top-[-10%] text-white/5 group-hover:scale-110 transition-transform">
                             <Zap size={140} />
                         </div>
@@ -478,15 +479,15 @@ export default function ReskillDashboardPage() {
                                 {activeCourseProgress > 0 && (
                                     <div className="mt-4 flex items-center gap-3">
                                         <div className="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
-                                            <div className="h-full bg-blue-400 rounded-full" style={{ width: `${activeCourseProgress}%` }} />
+                                            <div className="h-full bg-orange-300 rounded-full" style={{ width: `${activeCourseProgress}%` }} />
                                         </div>
-                                        <span className="text-[10px] font-black text-blue-400">{activeCourseProgress}%</span>
+                                        <span className="text-[10px] font-black text-orange-300">{activeCourseProgress}%</span>
                                     </div>
                                 )}
                             </div>
                             <Link
                                 href={lastLesson ? `/reskill/lesson/${lastLesson.id}` : `/reskill/course/${activeCourse?.id}`}
-                                className="mt-6 bg-blue-500 hover:bg-blue-400 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-blue-500/20"
+                                className="mt-6 bg-orange-400 hover:bg-orange-300 text-white font-black py-3 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-orange-400/20"
                             >
                                 {activeCourseProgress > 0 ? '学習を再開する' : 'コースを見る'} <PlayCircle size={20} />
                             </Link>
@@ -519,7 +520,7 @@ export default function ReskillDashboardPage() {
                     <section>
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
-                                <BookOpen className="text-blue-500" />
+                                <BookOpen className="text-orange-400" />
                                 マイ学習リスト
                             </h2>
                         </div>
@@ -546,7 +547,7 @@ export default function ReskillDashboardPage() {
                                                         bg-white border rounded-xl p-4 flex gap-4 transition-all hover:shadow-md group
                                                         ${isPast
                                                             ? (app.attended ? 'border-emerald-100 opacity-90' : 'border-slate-100 opacity-60 bg-slate-50/50')
-                                                            : 'border-blue-100 shadow-sm'
+                                                            : 'border-orange-50 shadow-sm'
                                                         }
                                                     `}
                                                 >
@@ -578,7 +579,7 @@ export default function ReskillDashboardPage() {
                                                                 {eventDate.toLocaleDateString()}
                                                             </span>
                                                         </div>
-                                                        <h4 className={`text-sm font-black text-slate-800 line-clamp-2 group-hover:text-blue-600 transition-colors mb-1 ${isPast && !app.attended ? 'text-slate-500' : ''}`}>
+                                                        <h4 className={`text-sm font-black text-slate-800 line-clamp-2 group-hover:text-orange-500 transition-colors mb-1 ${isPast && !app.attended ? 'text-slate-500' : ''}`}>
                                                             {event.title}
                                                         </h4>
                                                         {isPast ? (
@@ -592,7 +593,7 @@ export default function ReskillDashboardPage() {
                                                                 </div>
                                                             )
                                                         ) : (
-                                                            <div className="flex items-center gap-1 text-[10px] text-blue-500 font-bold">
+                                                            <div className="flex items-center gap-1 text-[10px] text-orange-400 font-bold">
                                                                 <CheckCircle2 size={10} /> 申し込み済み
                                                             </div>
                                                         )}
@@ -641,8 +642,8 @@ export default function ReskillDashboardPage() {
                                                         </div>
                                                     </div>
                                                     <Link href={`/reskill/lesson/${lesson.id}`} className="p-4 flex-1 flex flex-col px-4 pb-4 pt-3">
-                                                        <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest line-clamp-1 mb-1">{module?.title}</span>
-                                                        <h4 className="text-sm font-black text-slate-800 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                                                        <span className="text-[10px] font-black text-orange-500 uppercase tracking-widest line-clamp-1 mb-1">{module?.title}</span>
+                                                        <h4 className="text-sm font-black text-slate-800 line-clamp-2 group-hover:text-orange-500 transition-colors">
                                                             {lesson.title}
                                                         </h4>
                                                     </Link>
@@ -674,7 +675,7 @@ export default function ReskillDashboardPage() {
                                             : 'bg-white text-slate-500 hover:bg-slate-50 border border-slate-200'}
                                     `}
                                 >
-                                    <Layers size={16} className={isSelected ? 'text-blue-400' : 'text-slate-300'} />
+                                    <Layers size={16} className={isSelected ? 'text-orange-300' : 'text-slate-300'} />
                                     {track.title}
                                 </button>
                             )
@@ -701,6 +702,130 @@ export default function ReskillDashboardPage() {
 
 
 
+                {/* Club Activity Roadmap Section */}
+                <section>
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100">
+                            <Map size={20} />
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-black text-slate-800 tracking-tight">部活ロードマップ</h2>
+                            <p className="text-sm text-slate-500 font-bold">入門から専門まで、自分のペースで学ぼう</p>
+                        </div>
+                    </div>
+
+                    {/* Common Intro Path */}
+                    <div className="bg-white rounded-[2rem] border border-slate-200 p-6 mb-4 shadow-sm">
+                        <div className="flex items-center gap-2 mb-4">
+                            <span className="bg-emerald-100 text-emerald-700 text-xs font-black px-3 py-1 rounded-full">STEP 0 — 共通入門</span>
+                            <span className="text-xs text-slate-400 font-bold">全員まずここから</span>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {[
+                                { label: 'Scratch', desc: 'ビジュアルプログラミング', icon: <Cpu size={20} />, color: 'bg-orange-50 text-orange-600 border-orange-100', href: 'https://scratch.mit.edu' },
+                                { label: 'Canva', desc: 'デザイン・スライド作成', icon: <Palette size={20} />, color: 'bg-violet-50 text-violet-600 border-violet-100', href: 'https://www.canva.com' },
+                                { label: 'Google Workspace', desc: 'ドキュメント・スプレッドシート', icon: <Globe size={20} />, color: 'bg-orange-50 text-orange-500 border-orange-50', href: 'https://edu.google.com' },
+                                { label: 'タイピング練習', desc: 'キーボード基礎', icon: <Code size={20} />, color: 'bg-slate-50 text-slate-600 border-slate-200', href: 'https://e-typing.ne.jp' },
+                            ].map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`group flex flex-col items-start gap-2 p-4 rounded-2xl border ${item.color} hover:shadow-md transition-all`}
+                                >
+                                    <div className="flex items-center justify-between w-full">
+                                        {item.icon}
+                                        <ExternalLink size={12} className="opacity-40 group-hover:opacity-80 transition-opacity" />
+                                    </div>
+                                    <div>
+                                        <p className="font-black text-sm leading-none mb-1">{item.label}</p>
+                                        <p className="text-[10px] font-bold opacity-60">{item.desc}</p>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Individual Roadmaps */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {[
+                            {
+                                track: 'Webデザイン・HP制作',
+                                color: 'from-pink-500 to-rose-500',
+                                bg: 'bg-rose-50 border-rose-100',
+                                steps: ['HTML/CSS基礎', 'Canvaデザイン', 'Google Sites', 'WordPress入門'],
+                                links: [
+                                    { label: 'Progate HTML', href: 'https://prog-8.com/courses/html' },
+                                    { label: 'MDN Web Docs', href: 'https://developer.mozilla.org/ja/' },
+                                ],
+                                icon: <Globe size={18} />,
+                            },
+                            {
+                                track: 'プログラミング',
+                                color: 'from-orange-400 to-indigo-500',
+                                bg: 'bg-orange-50 border-orange-50',
+                                steps: ['Scratch', 'Python入門', 'Google Apps Script', 'Webアプリ開発'],
+                                links: [
+                                    { label: 'Progate Python', href: 'https://prog-8.com/courses/python' },
+                                    { label: 'GAS公式ドキュメント', href: 'https://developers.google.com/apps-script' },
+                                ],
+                                icon: <Code size={18} />,
+                            },
+                            {
+                                track: 'AI・データ活用',
+                                color: 'from-violet-500 to-purple-500',
+                                bg: 'bg-violet-50 border-violet-100',
+                                steps: ['AIツール体験', 'ChatGPT活用', 'スプレッドシート分析', 'AIプログラミング'],
+                                links: [
+                                    { label: 'Google AI Essentials', href: 'https://grow.google/intl/ja_jp/' },
+                                    { label: 'Microsoft AI Skills', href: 'https://learn.microsoft.com/ja-jp/ai/' },
+                                ],
+                                icon: <Bot size={18} />,
+                            },
+                        ].map((roadmap) => (
+                            <div key={roadmap.track} className={`rounded-2xl border p-5 ${roadmap.bg} hover:shadow-lg transition-all`}>
+                                <div className={`inline-flex items-center gap-2 bg-gradient-to-r ${roadmap.color} text-white text-xs font-black px-3 py-1.5 rounded-xl mb-4 shadow-sm`}>
+                                    {roadmap.icon}
+                                    {roadmap.track}
+                                </div>
+
+                                {/* Steps */}
+                                <div className="flex flex-col gap-2 mb-4">
+                                    {roadmap.steps.map((step, idx) => (
+                                        <div key={step} className="flex items-center gap-3">
+                                            <span className="w-5 h-5 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center text-[10px] font-black text-slate-500 shrink-0 shadow-sm">
+                                                {idx + 1}
+                                            </span>
+                                            <span className="text-xs font-bold text-slate-700">{step}</span>
+                                            {idx < roadmap.steps.length - 1 && (
+                                                <div className="w-px h-3 bg-slate-200 ml-auto" />
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Free materials links */}
+                                <div className="border-t border-white/60 pt-3 space-y-1.5">
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">無料教材</p>
+                                    {roadmap.links.map((link) => (
+                                        <a
+                                            key={link.label}
+                                            href={link.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-orange-500 transition-colors group"
+                                        >
+                                            <ExternalLink size={10} className="shrink-0 opacity-50 group-hover:opacity-100" />
+                                            {link.label}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 {/* Recommended Courses */}
                 <section>
                     <div className="flex items-center justify-between mb-4">
@@ -708,7 +833,7 @@ export default function ReskillDashboardPage() {
                             <Star className="text-amber-500" fill="currentColor" />
                             すべてのコース
                         </h2>
-                        <Link href="/reskill/courses" className="text-blue-600 font-bold text-sm hover:underline flex items-center gap-1">
+                        <Link href="/reskill/courses" className="text-orange-500 font-bold text-sm hover:underline flex items-center gap-1">
                             すべて見る <ChevronRight size={16} />
                         </Link>
                     </div>
@@ -769,7 +894,7 @@ export default function ReskillDashboardPage() {
                                                 </span>
                                             )}
                                             {isAdminRecommended && (
-                                                <span className="bg-blue-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg border border-blue-500 flex items-center gap-1">
+                                                <span className="bg-orange-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg border border-orange-400 flex items-center gap-1">
                                                     <Award size={12} fill="currentColor" /> リスキル大学推奨
                                                 </span>
                                             )}
@@ -798,7 +923,7 @@ export default function ReskillDashboardPage() {
                                         <div>
                                             <div className="flex items-center gap-2 mb-3 flex-wrap">
                                                 <span className={`text-[10px] font-black px-2 py-0.5 rounded-md ${course.level === '初級' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' :
-                                                    'bg-blue-50 text-blue-600 border border-blue-100'
+                                                    'bg-orange-50 text-orange-500 border border-orange-50'
                                                     }`}>
                                                     {course.level}
                                                 </span>
@@ -807,7 +932,7 @@ export default function ReskillDashboardPage() {
                                                 </span>
                                             </div>
                                             {/* Title Area */}
-                                            <h3 className="text-sm md:text-2xl font-black text-slate-800 leading-tight mb-1.5 md:mb-3 group-hover:text-blue-600 transition-colors break-words line-clamp-2 md:line-clamp-none">
+                                            <h3 className="text-sm md:text-2xl font-black text-slate-800 leading-tight mb-1.5 md:mb-3 group-hover:text-orange-500 transition-colors break-words line-clamp-2 md:line-clamp-none">
                                                 {course.title}
                                             </h3>
                                             <p className="text-xs md:text-sm text-slate-500 font-medium line-clamp-2 mb-6">
@@ -838,7 +963,7 @@ export default function ReskillDashboardPage() {
                                                 )}
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                                <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                                                     <ArrowRight size={20} />
                                                 </div>
                                             </div>
@@ -853,7 +978,7 @@ export default function ReskillDashboardPage() {
 
             {/* Bottom Nav Hint (for mobile style feel) */}
             <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-xl px-2 py-2 rounded-2xl border border-slate-200 shadow-2xl z-50 flex gap-1">
-                <Link href="/reskill" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white font-black text-sm shadow-lg shadow-blue-100">
+                <Link href="/reskill" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-black text-sm shadow-lg shadow-orange-50">
                     <Layout size={18} /> Dashboard
                 </Link>
                 <Link href="/reskill/courses" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
@@ -864,6 +989,9 @@ export default function ReskillDashboardPage() {
                 </Link>
                 <Link href="/reskill/instructors" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
                     <Users size={18} /> Teachers
+                </Link>
+                <Link href="/reskill/reflections" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
+                    <BookHeart size={18} /> 振り返り
                 </Link>
                 {(activeRole === 'admin' || activeRole === 'instructor') && (
                     <Link href="/reskill/management/participants" className="flex items-center gap-2 px-6 py-3 rounded-xl text-amber-600 hover:text-amber-700 font-black text-sm transition-colors">

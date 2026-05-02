@@ -172,11 +172,11 @@ export default function CoursesListPage() {
             {/* Header Section */}
             <div className="bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-6 py-8 md:py-12 flex flex-col items-center text-center">
-                    <div className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-blue-100 flex items-center gap-2">
+                    <div className="bg-orange-50 text-orange-500 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-orange-50 flex items-center gap-2">
                         <GraduationCap size={14} /> リスキル大学
                     </div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
-                        愛媛で、一生モノの<br /><span className="text-blue-600">スキルを磨こう。</span>
+                        愛媛で、一生モノの<br /><span className="text-orange-500">スキルを磨こう。</span>
                     </h1>
                     <p className="max-w-2xl text-slate-500 font-bold text-sm md:text-base leading-relaxed">
                         地域DX、ITエンジニアリング、ビジネスマナーまで。<br className="hidden md:block" />
@@ -187,7 +187,7 @@ export default function CoursesListPage() {
 
             {/* Filter & Search Bar */}
             <div className="max-w-4xl mx-auto px-6 -mt-8 relative z-20">
-                <div className="bg-white p-2 rounded-[2rem] shadow-xl shadow-blue-900/5 border border-slate-100 flex flex-col gap-2">
+                <div className="bg-white p-2 rounded-[2rem] shadow-xl shadow-orange-800/5 border border-slate-100 flex flex-col gap-2">
                     <div className="relative w-full">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={20} />
                         <input
@@ -221,7 +221,7 @@ export default function CoursesListPage() {
                             <select
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value as 'newest' | 'title' | 'duration')}
-                                className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold text-slate-700 outline-none focus:border-blue-500 cursor-pointer"
+                                className="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-bold text-slate-700 outline-none focus:border-orange-400 cursor-pointer"
                             >
                                 <option value="newest">人気順</option>
                                 <option value="title">タイトル順</option>
@@ -253,7 +253,7 @@ export default function CoursesListPage() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                                     <div className="absolute bottom-4 left-6 right-6 flex justify-between items-center">
-                                        <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-black shadow-lg">
+                                        <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-[10px] font-black shadow-lg">
                                             {course.category}
                                         </span>
                                         <div className="flex items-center gap-1.5 text-white text-[10px] font-black">
@@ -271,7 +271,7 @@ export default function CoursesListPage() {
                                                 </span>
                                             )}
                                         </div>
-                                        <h3 className="text-xl font-black text-slate-800 leading-tight mb-4 group-hover:text-blue-600 transition-colors">
+                                        <h3 className="text-xl font-black text-slate-800 leading-tight mb-4 group-hover:text-orange-500 transition-colors">
                                             {course.title}
                                         </h3>
                                         <p className="text-sm text-slate-500 font-medium line-clamp-2">
@@ -295,7 +295,7 @@ export default function CoursesListPage() {
                                                 </>
                                             )}
                                         </div>
-                                        <div className="bg-slate-50 p-2 rounded-xl text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                        <div className="bg-slate-50 p-2 rounded-xl text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                                             <ArrowRight size={18} />
                                         </div>
                                     </div>
@@ -322,18 +322,18 @@ export default function CoursesListPage() {
                     </div>
                     <div className="relative z-10 max-w-2xl">
                         <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight tracking-tight">
-                            学びを、<br /><span className="text-blue-400 italic">スカウト</span>に繋げよう。
+                            学びを、<br /><span className="text-orange-300 italic">スカウト</span>に繋げよう。
                         </h2>
                         <p className="text-slate-400 font-bold text-lg mb-8 leading-relaxed">
                             リスキル大学での学習履歴は、企業に共有されます。特定のコースを完了した求職者には、企業から特別なオファーが届くかもしれません。
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-4 rounded-3xl">
-                                <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Benefit 1</p>
+                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest mb-1">Benefit 1</p>
                                 <p className="font-black">スキルの可視化</p>
                             </div>
                             <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-4 rounded-3xl">
-                                <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Benefit 2</p>
+                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest mb-1">Benefit 2</p>
                                 <p className="font-black">スカウト率の向上</p>
                             </div>
                         </div>
@@ -346,7 +346,7 @@ export default function CoursesListPage() {
                 <Link href="/reskill" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
                     <LayoutIcon size={18} /> Dashboard
                 </Link>
-                <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white font-black text-sm shadow-lg shadow-blue-100">
+                <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-black text-sm shadow-lg shadow-orange-50">
                     <BookOpen size={18} /> Courses
                 </button>
             </div>

@@ -108,7 +108,7 @@ function CSVImportModal({ isOpen, onClose, onImport }: { isOpen: boolean; onClos
                 </p>
 
                 <textarea
-                    className="w-full h-64 bg-slate-50 border border-slate-200 rounded-xl p-4 font-mono text-sm outline-none focus:border-blue-500 mb-4"
+                    className="w-full h-64 bg-slate-50 border border-slate-200 rounded-xl p-4 font-mono text-sm outline-none focus:border-orange-400 mb-4"
                     placeholder={`React入門, https://youtu.be/..., プログラミング\nデザイン基礎, https://youtu.be/..., デザイン`}
                     value={csvText}
                     onChange={e => setCsvText(e.target.value)}
@@ -409,7 +409,7 @@ export default function AdminContentPage() {
                     </button>
                     <button
                         onClick={openCreate}
-                        className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+                        className="flex items-center gap-2 bg-orange-500 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-100"
                     >
                         <Plus size={20} />
                         <span>新規作成</span>
@@ -429,7 +429,7 @@ export default function AdminContentPage() {
                             placeholder="コンテンツを検索..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-10 pr-4 py-2 font-bold text-slate-700 bg-slate-50 rounded-lg border-2 border-transparent focus:border-blue-500 outline-none transition-colors"
+                            className="w-full pl-10 pr-4 py-2 font-bold text-slate-700 bg-slate-50 rounded-lg border-2 border-transparent focus:border-orange-400 outline-none transition-colors"
                         />
                     </div>
                     <div className="flex items-center gap-2 border-l border-slate-200 pl-4">
@@ -453,13 +453,13 @@ export default function AdminContentPage() {
                 <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
                     <button
                         onClick={() => setViewMode('grid')}
-                        className={`p-2 rounded-md transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`p-2 rounded-md transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-orange-500' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                         <LayoutGrid size={20} />
                     </button>
                     <button
                         onClick={() => setViewMode('list')}
-                        className={`p-2 rounded-md transition-all ${viewMode === 'list' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`p-2 rounded-md transition-all ${viewMode === 'list' ? 'bg-white shadow-sm text-orange-500' : 'text-slate-400 hover:text-slate-600'}`}
                     >
                         <List size={20} />
                     </button>
@@ -476,7 +476,7 @@ export default function AdminContentPage() {
                         const thumbnail = item.thumbnail || (youtubeId ? `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg` : null);
 
                         return (
-                            <div key={item.id} className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+                            <div key={item.id} className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl hover:border-orange-100 transition-all duration-300">
                                 {/* Proportional Video Area */}
                                 <div className="aspect-video bg-slate-900 relative">
                                     <>
@@ -535,7 +535,7 @@ export default function AdminContentPage() {
                                                 </span>
                                             )}
                                             {item.material_url && (
-                                                <span className="px-2 py-1 rounded text-[10px] font-black uppercase text-white shadow-sm bg-blue-500 flex items-center gap-1">
+                                                <span className="px-2 py-1 rounded text-[10px] font-black uppercase text-white shadow-sm bg-orange-400 flex items-center gap-1">
                                                     <LinkIcon size={10} /> Doc
                                                 </span>
                                             )}
@@ -555,7 +555,7 @@ export default function AdminContentPage() {
                                 {/* Info */}
                                 <div className="p-5">
                                     <div className="flex justify-between items-start mb-2">
-                                        <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{item.category}</span>
+                                        <span className="text-xs font-bold text-orange-500 bg-orange-50 px-2 py-1 rounded-md">{item.category}</span>
                                         <button className="text-slate-300 hover:text-slate-600">
                                             <MoreVertical size={18} />
                                         </button>
@@ -567,7 +567,7 @@ export default function AdminContentPage() {
                                     <div className="border-t border-slate-100 pt-4 flex items-center justify-between text-slate-400 text-xs font-bold">
                                         <span>{item.createdAt ? new Date(item.createdAt).toLocaleDateString() : '-'}</span>
                                         <div className="flex gap-2">
-                                            <button onClick={() => openEdit(item)} className="hover:text-blue-600 p-1"><Edit size={16} /></button>
+                                            <button onClick={() => openEdit(item)} className="hover:text-orange-500 p-1"><Edit size={16} /></button>
                                             <button onClick={() => openDelete(item)} className="hover:text-red-500 p-1"><Trash2 size={16} /></button>
                                         </div>
                                     </div>
@@ -598,7 +598,7 @@ export default function AdminContentPage() {
                                             {/* Preview Thumb on Hover (Click to Maximize as well) */}
                                             <button
                                                 onClick={() => setPlayingVideo(item)}
-                                                className="w-12 h-8 bg-slate-200 rounded overflow-hidden relative shrink-0 group-hover:ring-2 ring-blue-400 transition-all"
+                                                className="w-12 h-8 bg-slate-200 rounded overflow-hidden relative shrink-0 group-hover:ring-2 ring-orange-300 transition-all"
                                             >
                                                 {item.url && (
                                                     <img
@@ -610,7 +610,7 @@ export default function AdminContentPage() {
                                                     <Play size={12} className="text-white" fill="currentColor" />
                                                 </div>
                                             </button>
-                                            <span className="font-bold text-slate-700 group-hover:text-blue-600 transition-colors cursor-pointer" onClick={() => setPlayingVideo(item)}>
+                                            <span className="font-bold text-slate-700 group-hover:text-orange-500 transition-colors cursor-pointer" onClick={() => setPlayingVideo(item)}>
                                                 {item.title}
                                             </span>
                                         </div>
@@ -628,7 +628,7 @@ export default function AdminContentPage() {
                                                 </span>
                                             )}
                                             {item.material_url && (
-                                                <a href={item.material_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-600 border border-blue-100 hover:bg-blue-100" onClick={e => e.stopPropagation()}>
+                                                <a href={item.material_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-orange-50 text-orange-500 border border-orange-50 hover:bg-orange-50" onClick={e => e.stopPropagation()}>
                                                     <LinkIcon size={10} /> Doc
                                                 </a>
                                             )}
@@ -649,7 +649,7 @@ export default function AdminContentPage() {
                                     </td>
                                     <td className="px-6 py-4 text-right">
                                         <div className="flex items-center justify-end gap-2 text-slate-300">
-                                            <button onClick={() => openEdit(item)} className="hover:text-blue-600 p-1"><Edit size={16} /></button>
+                                            <button onClick={() => openEdit(item)} className="hover:text-orange-500 p-1"><Edit size={16} /></button>
                                             <button onClick={() => openDelete(item)} className="hover:text-red-500 p-1"><Trash2 size={16} /></button>
                                         </div>
                                     </td>

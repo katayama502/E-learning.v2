@@ -91,7 +91,7 @@ export default function ContentFormModal({
             duration: duration,
             createdAt: initialData?.createdAt || new Date().toISOString(),
             quiz: hasQuiz ? quizData : undefined,
-            material_url: materialUrl || undefined
+            material_url: materialUrl || undefined,
         };
         onSave(newItem);
         onClose();
@@ -116,23 +116,24 @@ export default function ContentFormModal({
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="col-span-2">
                                 <label className="text-xs font-bold text-slate-500 block mb-1">タイトル</label>
-                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={title} onChange={e => setTitle(e.target.value)} placeholder="例: Webマーケティング基礎" />
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={title} onChange={e => setTitle(e.target.value)} placeholder="例: Webマーケティング基礎" />
                             </div>
                             <div className="col-span-2">
                                 <label className="text-xs font-bold text-slate-500 block mb-1">動画URL (YouTube)</label>
-                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://youtube.com/..." />
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={url} onChange={e => setUrl(e.target.value)} placeholder="https://youtube.com/..." />
                             </div>
                             <div className="col-span-2">
-                                <label className="text-xs font-bold text-slate-500 block mb-1">資料URL (Optional)</label>
-                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={materialUrl} onChange={e => setMaterialUrl(e.target.value)} placeholder="https://docs.google.com/..." />
+                                <label className="text-xs font-bold text-slate-500 block mb-1">資料 / スライドURL</label>
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={materialUrl} onChange={e => setMaterialUrl(e.target.value)} placeholder="https://docs.google.com/presentation/d/... または PDF URL" />
+                                <p className="text-[10px] text-slate-400 mt-1">Google Slides・Canva のURLを入力すると、レッスン内にスライドが埋め込み表示されます</p>
                             </div>
                             <div className="col-span-2">
                                 <label className="text-xs font-bold text-slate-500 block mb-1">コース (カテゴリ)</label>
-                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={category} onChange={e => setCategory(e.target.value)} placeholder="例: マーケティング" />
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={category} onChange={e => setCategory(e.target.value)} placeholder="例: マーケティング" />
                             </div>
                             <div className="col-span-2">
                                 <label className="text-xs font-bold text-slate-500 block mb-1">再生時間 (Ex: 10:25)</label>
-                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={duration} onChange={e => setDuration(e.target.value)} placeholder="10:00" />
+                                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={duration} onChange={e => setDuration(e.target.value)} placeholder="10:00" />
                             </div>
                         </div>
                     </section>
@@ -178,7 +179,7 @@ export default function ContentFormModal({
                                 </div>
                                 <div>
                                     <label className="text-xs font-bold text-slate-500 block mb-1">問題文</label>
-                                    <textarea className="w-full h-20 bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={quizData.question} onChange={e => setQuizData({ ...quizData, question: e.target.value })} />
+                                    <textarea className="w-full h-20 bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={quizData.question} onChange={e => setQuizData({ ...quizData, question: e.target.value })} />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {quizData.options.map((opt, idx) => (
@@ -186,7 +187,7 @@ export default function ContentFormModal({
                                             <label className="text-xs font-bold text-slate-500 block mb-1">選択肢 {idx + 1}</label>
                                             <input
                                                 type="text"
-                                                className={`w-full border rounded-lg px-3 py-2 font-bold outline-none focus:border-blue-500 ${opt === quizData.correctAnswer ? 'bg-green-50 border-green-200 text-green-700' : 'bg-white border-slate-200 text-slate-700'}`}
+                                                className={`w-full border rounded-lg px-3 py-2 font-bold outline-none focus:border-orange-400 ${opt === quizData.correctAnswer ? 'bg-green-50 border-green-200 text-green-700' : 'bg-white border-slate-200 text-slate-700'}`}
                                                 value={opt}
                                                 onChange={e => {
                                                     const newOpts = [...quizData.options];
@@ -200,7 +201,7 @@ export default function ContentFormModal({
                                 <div>
                                     <label className="text-xs font-bold text-slate-500 block mb-1">正解の選択肢 (上記と完全一致させてください)</label>
                                     <select
-                                        className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500"
+                                        className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400"
                                         value={quizData.correctAnswer}
                                         onChange={e => setQuizData({ ...quizData, correctAnswer: e.target.value })}
                                     >
@@ -212,7 +213,7 @@ export default function ContentFormModal({
                                 </div>
                                 <div>
                                     <label className="text-xs font-bold text-slate-500 block mb-1">解説</label>
-                                    <textarea className="w-full h-20 bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-blue-500" value={quizData.explanation} onChange={e => setQuizData({ ...quizData, explanation: e.target.value })} />
+                                    <textarea className="w-full h-20 bg-white border border-slate-200 rounded-lg px-3 py-2 font-bold text-slate-700 outline-none focus:border-orange-400" value={quizData.explanation} onChange={e => setQuizData({ ...quizData, explanation: e.target.value })} />
                                 </div>
                             </div>
                         )}
@@ -220,7 +221,7 @@ export default function ContentFormModal({
                 </div>
 
                 <div className="p-6 border-t border-slate-100 flex justify-end gap-3 sticky bottom-0 bg-white">
-                    <button onClick={handleSubmit} className="w-full md:w-auto px-8 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
+                    <button onClick={handleSubmit} className="w-full md:w-auto px-8 bg-orange-500 text-white font-bold py-3 rounded-xl hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-orange-100">
                         <Save size={18} /> {initialData ? '更新する' : '保存する'}
                     </button>
                 </div>

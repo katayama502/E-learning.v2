@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { GraduationCap, BookOpen, FileText, ArrowRight } from "lucide-react";
+import { GraduationCap, BookOpen, FileText, ArrowRight, Users } from "lucide-react";
 
 export default function AdminTopPage() {
   return (
@@ -17,10 +17,28 @@ export default function AdminTopPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Link
-            href="/admin/elearning"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all flex items-start gap-4"
+            href="/admin/users"
+            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-orange-200 transition-all flex items-start gap-4"
           >
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+            <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white shrink-0">
+              <Users size={24} />
+            </div>
+            <div className="flex-1">
+              <h2 className="font-black text-slate-800 mb-1 flex items-center gap-2">
+                アカウント管理
+                <ArrowRight size={16} className="text-slate-400" />
+              </h2>
+              <p className="text-sm text-slate-500 font-bold">
+                ユーザーの発行・権限変更・削除
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/elearning"
+            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-orange-200 transition-all flex items-start gap-4"
+          >
+            <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 shrink-0">
               <GraduationCap size={24} />
             </div>
             <div className="flex-1">
@@ -36,7 +54,7 @@ export default function AdminTopPage() {
 
           <Link
             href="/admin/elearning/courses"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all flex items-start gap-4"
+            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-orange-200 transition-all flex items-start gap-4"
           >
             <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
               <BookOpen size={24} />
@@ -54,7 +72,7 @@ export default function AdminTopPage() {
 
           <Link
             href="/admin/elearning/curriculums"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all flex items-start gap-4"
+            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-orange-200 transition-all flex items-start gap-4"
           >
             <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 shrink-0">
               <FileText size={24} />
@@ -72,7 +90,7 @@ export default function AdminTopPage() {
 
           <Link
             href="/admin/elearning/content"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all flex items-start gap-4"
+            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-orange-200 transition-all flex items-start gap-4"
           >
             <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 shrink-0">
               <FileText size={24} />

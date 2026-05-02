@@ -76,7 +76,7 @@ const LessonPreviewItem = ({ lesson, index, isCompleted }: { lesson: any, index:
                         {/* Overlay Play Icon */}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition-colors">
                             <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-all">
-                                <Play size={24} className="text-blue-600 ml-1 fill-blue-600" />
+                                <Play size={24} className="text-orange-500 ml-1 fill-orange-500" />
                             </div>
                         </div>
 
@@ -106,7 +106,7 @@ const LessonPreviewItem = ({ lesson, index, isCompleted }: { lesson: any, index:
                     )}
                 </div>
 
-                <Link href={`/reskill/lesson/${lesson.id}`} className="block group-hover:text-blue-600 transition-colors">
+                <Link href={`/reskill/lesson/${lesson.id}`} className="block group-hover:text-orange-500 transition-colors">
                     <h3 className="text-base font-black text-slate-800 line-clamp-2 mb-2 leading-snug">
                         {lesson.title}
                     </h3>
@@ -117,7 +117,7 @@ const LessonPreviewItem = ({ lesson, index, isCompleted }: { lesson: any, index:
                         href={`/reskill/lesson/${lesson.id}`}
                         className={`text-xs font-bold hover:underline flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${isCompleted
                             ? 'bg-emerald-100 text-emerald-700 hover:text-emerald-800'
-                            : 'bg-blue-50 text-blue-600 hover:text-blue-700'
+                            : 'bg-orange-50 text-orange-500 hover:text-orange-600'
                             }`}
                     >
                         {isCompleted ? '復習する' : '受講する'} <ArrowRight size={12} />
@@ -223,7 +223,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     if (!course) return (
         <div className="min-h-screen flex flex-col items-center justify-center gap-4">
             <div className="font-bold text-slate-400 text-lg">講座が見つかりません</div>
-            <Link href="/reskill/courses" className="text-blue-600 font-bold hover:underline">講座一覧に戻る</Link>
+            <Link href="/reskill/courses" className="text-orange-500 font-bold hover:underline">講座一覧に戻る</Link>
         </div>
     );
 
@@ -241,7 +241,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
                 <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start">
                     <div className="md:col-span-2">
-                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider mb-4 inline-block">
+                        <span className="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider mb-4 inline-block">
                             {course.category || '講座'}
                         </span>
                         <h1 className="text-3xl md:text-4xl font-black text-slate-800 leading-tight tracking-tight mb-4">{course.title}</h1>
@@ -260,11 +260,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     </div>
 
                     {/* Cover Image Area */}
-                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-blue-100 border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-orange-50 border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
                         {course.image ? (
                             <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
                         ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                            <div className="w-full h-full bg-gradient-to-br from-orange-400 to-indigo-600 flex items-center justify-center">
                                 <BookOpen size={48} className="text-white/30" />
                             </div>
                         )}
@@ -287,7 +287,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
                     <section>
                         <h2 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">
-                            <BookOpen className="text-blue-600" size={20} />
+                            <BookOpen className="text-orange-500" size={20} />
                             カリキュラム
                         </h2>
                         <div className="space-y-4">
@@ -339,7 +339,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                         {allLessons[0] ? (
                             <Link
                                 href={`/reskill/lesson/${allLessons[0].id}`}
-                                className="w-full bg-blue-600 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-200 hover:bg-blue-700 hover:scale-[1.02] transition-all group"
+                                className="w-full bg-orange-500 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-orange-100 hover:bg-orange-600 hover:scale-[1.02] transition-all group"
                             >
                                 学習を始める <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                             </Link>

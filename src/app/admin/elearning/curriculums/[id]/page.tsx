@@ -223,7 +223,7 @@ export default function AdminCurriculumDetailPage() {
                         onClick={handleSave}
                         disabled={saving}
                         className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-colors shadow-lg ${hasChanges
-                                ? 'bg-blue-600 text-white hover:bg-blue-700 animate-pulse'
+                                ? 'bg-orange-500 text-white hover:bg-orange-600 animate-pulse'
                                 : 'bg-slate-900 text-white hover:bg-slate-700'
                             } disabled:opacity-50`}
                     >
@@ -257,7 +257,7 @@ export default function AdminCurriculumDetailPage() {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors text-slate-900"
+                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors text-slate-900"
                     />
                 </div>
                 <div>
@@ -265,7 +265,7 @@ export default function AdminCurriculumDetailPage() {
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors min-h-[100px] text-slate-900"
+                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors min-h-[100px] text-slate-900"
                     />
                 </div>
                 <div>
@@ -274,7 +274,7 @@ export default function AdminCurriculumDetailPage() {
                         type="text"
                         value={thumbnail}
                         onChange={(e) => setThumbnail(e.target.value)}
-                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors text-slate-900"
+                        className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors text-slate-900"
                     />
                 </div>
             </div>
@@ -286,7 +286,7 @@ export default function AdminCurriculumDetailPage() {
                     </h2>
                     <button
                         onClick={() => setShowAddModal(true)}
-                        className="flex items-center gap-2 text-blue-600 font-bold hover:underline"
+                        className="flex items-center gap-2 text-orange-500 font-bold hover:underline"
                     >
                         <Plus size={18} /> Add Course
                     </button>
@@ -300,12 +300,12 @@ export default function AdminCurriculumDetailPage() {
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-slate-700">{course.title}</span>
                                         {course.isNew && (
-                                            <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs font-bold rounded">New</span>
+                                            <span className="px-2 py-0.5 bg-orange-50 text-orange-500 text-xs font-bold rounded">New</span>
                                         )}
                                     </div>
                                     <div className="flex items-center gap-4">
                                         {!course.isNew && (
-                                            <Link href={`/admin/elearning/courses/${course.id}`} className="text-xs font-bold text-blue-600 hover:underline">
+                                            <Link href={`/admin/elearning/courses/${course.id}`} className="text-xs font-bold text-orange-500 hover:underline">
                                                 Edit
                                             </Link>
                                         )}
@@ -343,7 +343,7 @@ export default function AdminCurriculumDetailPage() {
                                     type="text"
                                     value={newCourseTitle}
                                     onChange={(e) => setNewCourseTitle(e.target.value)}
-                                    className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors"
+                                    className="w-full font-bold border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-400 outline-none transition-colors"
                                     placeholder="Enter course title..."
                                     autoFocus
                                 />
@@ -358,7 +358,7 @@ export default function AdminCurriculumDetailPage() {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                                    className="px-4 py-2 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 disabled:opacity-50"
                                     disabled={!newCourseTitle.trim()}
                                 >
                                     Add

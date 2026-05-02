@@ -48,7 +48,7 @@ export function SortableItem({ id, children, index }: SortableItemProps) {
 
     return (
         <div ref={setNodeRef} style={style} className="touch-none">
-            <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-3 group hover:border-blue-300 transition-colors">
+            <div className="flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-3 group hover:border-orange-200 transition-colors">
                 <div {...attributes} {...listeners} className="text-slate-300 cursor-grab hover:text-slate-600 p-1">
                     <GripVertical size={20} />
                 </div>

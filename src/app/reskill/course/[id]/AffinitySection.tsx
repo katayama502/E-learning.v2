@@ -55,8 +55,8 @@ export const AffinitySection = ({ course, courseId, userId, userAnalysis, userNa
 
     if (loading) {
         return (
-            <div className="bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 rounded-2xl p-6 mb-8 flex items-center justify-center min-h-[160px]">
-                <div className="flex flex-col items-center gap-2 text-blue-600/60">
+            <div className="bg-gradient-to-br from-indigo-50 to-orange-50 border border-orange-50 rounded-2xl p-6 mb-8 flex items-center justify-center min-h-[160px]">
+                <div className="flex flex-col items-center gap-2 text-orange-500/60">
                     <Loader2 className="animate-spin" size={24} />
                     <span className="text-xs font-bold animate-pulse">AIがあなたの強みとの相性を分析中...</span>
                 </div>
@@ -87,23 +87,23 @@ export const AffinitySection = ({ course, courseId, userId, userAnalysis, userNa
     }
 
     return (
-        <div className="bg-gradient-to-br from-indigo-50/80 to-blue-50/80 backdrop-blur-sm border border-blue-100/50 rounded-2xl p-6 mb-8 relative overflow-hidden group hover:shadow-lg transition-all duration-500">
+        <div className="bg-gradient-to-br from-indigo-50/80 to-orange-50/80 backdrop-blur-sm border border-orange-50/50 rounded-2xl p-6 mb-8 relative overflow-hidden group hover:shadow-lg transition-all duration-500">
             {/* Background Decorations */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-400/20 transition-colors duration-700" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-300/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-orange-300/20 transition-colors duration-700" />
 
             <div className="relative z-10">
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                        <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+                        <span className="bg-gradient-to-r from-orange-500 to-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
                             <BrainCircuit size={10} /> AI Analysis
                         </span>
-                        <h3 className="font-black text-blue-900 flex items-center gap-2 text-sm">
+                        <h3 className="font-black text-orange-800 flex items-center gap-2 text-sm">
                             あなたとの親和性
                         </h3>
                     </div>
                     <div className="flex items-center gap-1">
-                        <span className="text-xs font-bold text-blue-600">Match Score</span>
-                        <span className="text-2xl font-black text-blue-700">{result.score}<span className="text-sm text-blue-400">%</span></span>
+                        <span className="text-xs font-bold text-orange-500">Match Score</span>
+                        <span className="text-2xl font-black text-orange-600">{result.score}<span className="text-sm text-orange-300">%</span></span>
                     </div>
                 </div>
 
@@ -118,13 +118,13 @@ export const AffinitySection = ({ course, courseId, userId, userAnalysis, userNa
                 {/* Match Details */}
                 {result.matchDetails && result.matchDetails.length > 0 && (
                     <div className="mb-4 space-y-2">
-                        <h5 className="text-xs font-bold text-blue-800 flex items-center gap-1 mb-2">
+                        <h5 className="text-xs font-bold text-orange-700 flex items-center gap-1 mb-2">
                             <Sparkles size={12} /> マッチング詳細
                         </h5>
                         {result.matchDetails.map((detail, idx) => (
                             <div key={idx} className="bg-white/60 rounded-xl p-3 border border-white/50 shadow-sm text-xs">
                                 <div className="flex flex-wrap items-center gap-2 mb-1.5 opacity-90">
-                                    <span className="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
+                                    <span className="bg-orange-50 text-orange-700 px-1.5 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
                                         <Zap size={8} /> あなたの{detail.strength}
                                     </span>
                                     <LinkIcon size={10} className="text-slate-400/70" />
@@ -132,8 +132,8 @@ export const AffinitySection = ({ course, courseId, userId, userAnalysis, userNa
                                         {detail.courseFeature}
                                     </span>
                                 </div>
-                                <p className="text-slate-700 leading-snug pl-1 border-l-2 border-blue-200 ml-1">
-                                    <span className="font-bold text-blue-600 mr-1">point:</span>
+                                <p className="text-slate-700 leading-snug pl-1 border-l-2 border-orange-100 ml-1">
+                                    <span className="font-bold text-orange-500 mr-1">point:</span>
                                     {detail.explanation}
                                 </p>
                             </div>

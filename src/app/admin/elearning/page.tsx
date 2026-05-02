@@ -54,12 +54,12 @@ const TrackListItem = ({ track, onUpdate }: { track: any, onUpdate: () => void }
                 className="flex items-center justify-between w-full p-3 hover:bg-slate-50 transition-colors rounded-xl group relative"
             >
                 <div className="flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${track.is_published ? 'bg-blue-50 text-blue-600' : 'bg-slate-100 text-slate-400'}`}>
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${track.is_published ? 'bg-orange-50 text-orange-500' : 'bg-slate-100 text-slate-400'}`}>
                         <Layout size={20} />
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <h3 className={`font-bold transition-colors ${track.is_published ? 'text-slate-800 group-hover:text-blue-600' : 'text-slate-500'}`}>
+                            <h3 className={`font-bold transition-colors ${track.is_published ? 'text-slate-800 group-hover:text-orange-500' : 'text-slate-500'}`}>
                                 {track.title}
                             </h3>
                             {!track.is_published && (
@@ -68,7 +68,7 @@ const TrackListItem = ({ track, onUpdate }: { track: any, onUpdate: () => void }
                                 </span>
                             )}
                             {track.is_published && (
-                                <span className="bg-blue-50 text-blue-600 text-[10px] px-1.5 py-0.5 rounded font-bold flex items-center gap-1">
+                                <span className="bg-orange-50 text-orange-500 text-[10px] px-1.5 py-0.5 rounded font-bold flex items-center gap-1">
                                     <Eye size={10} /> 公開中
                                 </span>
                             )}
@@ -114,7 +114,7 @@ const TrackListItem = ({ track, onUpdate }: { track: any, onUpdate: () => void }
                             <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 z-50 overflow-hidden py-1">
                                 <button
                                     onClick={handleTogglePublish}
-                                    className="w-full text-left px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-blue-600 flex items-center gap-2"
+                                    className="w-full text-left px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-orange-500 flex items-center gap-2"
                                 >
                                     {track.is_published ? <EyeOff size={16} /> : <Eye size={16} />}
                                     {track.is_published ? '非公開にする' : '公開する'}
@@ -214,7 +214,7 @@ const ModuleListItem = ({ mod, onUpdate }: { mod: any, onUpdate: () => void }) =
                         </div>
                         <div className="flex items-center gap-2 mt-0.5">
                             {mod.category && mod.category !== '未分類' && (
-                                <span className="bg-blue-100 text-blue-600 text-[10px] px-2 py-0.5 rounded-full font-bold">
+                                <span className="bg-orange-50 text-orange-500 text-[10px] px-2 py-0.5 rounded-full font-bold">
                                     {mod.category}
                                 </span>
                             )}
@@ -255,7 +255,7 @@ const ModuleListItem = ({ mod, onUpdate }: { mod: any, onUpdate: () => void }) =
                             <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 z-50 overflow-hidden py-1">
                                 <button
                                     onClick={handleTogglePublish}
-                                    className="w-full text-left px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-blue-600 flex items-center gap-2"
+                                    className="w-full text-left px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-orange-500 flex items-center gap-2"
                                 >
                                     {mod.is_public ? <EyeOff size={16} /> : <Eye size={16} />}
                                     {mod.is_public ? '非公開にする' : '公開する'}
@@ -353,10 +353,10 @@ export default function AdminElearningPage() {
                 <section>
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-xl font-black text-slate-800 flex items-center gap-2">
-                            <Layout className="text-blue-600" />
+                            <Layout className="text-orange-500" />
                             Curriculums (Tracks)
                         </h2>
-                        <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                        <button className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-100">
                             <Plus size={16} /> 新規作成
                         </button>
                     </div>
