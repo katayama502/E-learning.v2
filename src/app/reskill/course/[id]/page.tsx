@@ -9,7 +9,6 @@ import { toast } from 'sonner';
 import { getYoutubeId } from '@/utils/youtube';
 
 import { ElearningService } from '@/services/elearning';
-import { AffinitySection } from './AffinitySection';
 
 // --- Lesson Preview Component ---
 const LessonPreviewItem = ({ lesson, index, isCompleted }: { lesson: any, index: number, isCompleted: boolean }) => {
@@ -276,15 +275,6 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             <main className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
                 {/* Lessons List */}
                 <div className="md:col-span-2">
-                    {/* Affinity Section */}
-                    <AffinitySection
-                        course={course}
-                        courseId={id}
-                        userId={currentUserId}
-                        userAnalysis={userAnalysis}
-                        userName={userName}
-                    />
-
                     <section>
                         <h2 className="text-xl font-black text-slate-800 mb-6 flex items-center gap-2">
                             <BookOpen className="text-orange-500" size={20} />

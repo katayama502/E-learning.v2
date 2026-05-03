@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Plus, Search, Filter, MoreVertical, Play, FileText, Trash2, Edit, LayoutGrid, List, X, Maximize2, Save, Upload, AlertTriangle, FileSpreadsheet, Wand2, CheckCircle2, Link as LinkIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Plus, Search, Filter, MoreVertical, Play, FileText, Trash2, Edit, LayoutGrid, List, X, Maximize2, Save, Upload, AlertTriangle, FileSpreadsheet, CheckCircle2, Link as LinkIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ContentItem, QuizData } from '@/data/mock_elearning_data';
 
 import { getYoutubeId } from '@/utils/youtube';
@@ -127,114 +127,6 @@ function CSVImportModal({ isOpen, onClose, onImport }: { isOpen: boolean; onClos
     );
 }
 
-// Bulk Generate Modal
-function BulkGenerateModal({
-    isOpen,
-    onClose,
-    contents,
-    onGenerateItem,
-    onComplete
-}: {
-    isOpen: boolean;
-    onClose: () => void;
-    contents: ContentItem[];
-    onGenerateItem: (item: ContentItem) => Promise<boolean>;
-    onComplete: () => void;
-}) {
-    const [isProcessing, setIsProcessing] = useState(false);
-    const [progress, setProgress] = useState({ current: 0, total: 0, success: 0, fail: 0 });
-
-    // Filter items without quiz
-    const targetItems = contents.filter(c => !c.quiz);
-
-    if (!isOpen) return null;
-
-    const handleStart = async () => {
-        setIsProcessing(true);
-        const total = targetItems.length;
-        let success = 0;
-        let fail = 0;
-
-        setProgress({ current: 0, total, success: 0, fail: 0 });
-
-        for (let i = 0; i < total; i++) {
-            const item = targetItems[i];
-            try {
-                const result = await onGenerateItem(item);
-                if (result) success++;
-                else fail++;
-            } catch (e) {
-                fail++;
-            }
-            setProgress({ current: i + 1, total, success, fail });
-        }
-
-        setIsProcessing(false);
-        onComplete();
-    };
-
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={isProcessing ? undefined : onClose}>
-            <div className="bg-white w-full max-w-lg rounded-2xl p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
-                <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4">
-                        <Wand2 size={24} className={isProcessing ? "animate-spin" : ""} />
-                    </div>
-                    <h2 className="text-xl font-black text-slate-900 mb-2">小テスト一括生成</h2>
-
-                    {!isProcessing && progress.total === 0 && (
-                        <>
-                            <p className="text-sm text-slate-500 font-bold mb-6">
-                                現在表示されているコンテンツのうち、<br />
-                                <span className="text-purple-600 text-lg">{targetItems.length}</span> 件のコンテンツに小テストがありません。
-                            </p>
-                            <p className="text-xs text-slate-400 mb-6">
-                                ※ AIがタイトルから問題を自動生成します。<br />
-                                ※ 生成には時間がかかる場合があります。
-                            </p>
-                            <div className="flex gap-3 w-full">
-                                <button onClick={onClose} className="flex-1 bg-slate-100 text-slate-700 font-bold py-2.5 rounded-xl hover:bg-slate-200 transition-colors">
-                                    キャンセル
-                                </button>
-                                <button
-                                    onClick={handleStart}
-                                    disabled={targetItems.length === 0}
-                                    className="flex-1 bg-purple-600 text-white font-bold py-2.5 rounded-xl hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    生成を開始する
-                                </button>
-                            </div>
-                        </>
-                    )}
-
-                    {(isProcessing || progress.total > 0) && (
-                        <div className="w-full space-y-4">
-                            <p className="text-sm font-bold text-slate-600">
-                                {isProcessing ? '生成中...' : '生成完了'} ({progress.current} / {progress.total})
-                            </p>
-                            <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                                <div
-                                    className="bg-purple-600 h-full transition-all duration-300"
-                                    style={{ width: `${(progress.current / Math.max(progress.total, 1)) * 100}%` }}
-                                />
-                            </div>
-                            <div className="flex justify-between text-xs font-bold text-slate-400 px-2">
-                                <span className="text-green-600">成功: {progress.success}</span>
-                                <span className="text-red-500">失敗: {progress.fail}</span>
-                            </div>
-                            {!isProcessing && (
-                                <button onClick={onClose} className="w-full mt-4 bg-slate-900 text-white font-bold py-2.5 rounded-xl hover:bg-slate-800 transition-colors">
-                                    閉じる
-                                </button>
-                            )}
-                        </div>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-}
-
 
 // --- Main Page Component ---
 
@@ -259,7 +151,6 @@ export default function AdminContentPage() {
     // Modal States
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [isCSVOpen, setIsCSVOpen] = useState(false);
-    const [isBulkGenOpen, setIsBulkGenOpen] = useState(false);
     const [editingItem, setEditingItem] = useState<ContentItem | null>(null);
     const [deletingItem, setDeletingItem] = useState<ContentItem | null>(null);
 
@@ -336,25 +227,6 @@ export default function AdminContentPage() {
         setIsCSVOpen(false);
     };
 
-    // Single item generation handler for Bulk Modal
-    const handleGenerateItem = async (item: ContentItem): Promise<boolean> => {
-        try {
-            const res = await fetch('/api/quiz/generate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: item.title })
-            });
-
-            if (!res.ok) return false;
-
-            const quizData = await res.json();
-            await ElearningService.updateContent(item.id, { quiz: quizData });
-            return true;
-        } catch (e) {
-            console.error(e);
-            return false;
-        }
-    };
 
 
 
@@ -393,13 +265,6 @@ export default function AdminContentPage() {
                     </p>
                 </div>
                 <div className="flex gap-3">
-                    <button
-                        onClick={() => setIsBulkGenOpen(true)}
-                        className="flex items-center gap-2 bg-purple-50 border border-purple-200 text-purple-600 px-4 py-2.5 rounded-xl font-bold hover:bg-purple-100 transition-colors"
-                    >
-                        <Wand2 size={18} />
-                        <span className="hidden md:inline">小テスト一括生成</span>
-                    </button>
                     <button
                         onClick={() => setIsCSVOpen(true)}
                         className="flex items-center gap-2 bg-white border border-slate-200 text-slate-600 px-4 py-2.5 rounded-xl font-bold hover:bg-slate-50 transition-colors"
@@ -694,14 +559,6 @@ export default function AdminContentPage() {
                 onClose={() => setIsFormOpen(false)}
                 onSave={handleSave}
                 initialData={editingItem}
-            />
-
-            <BulkGenerateModal
-                isOpen={isBulkGenOpen}
-                onClose={() => setIsBulkGenOpen(false)}
-                contents={contents} // Pass currently filtered/viewed contents
-                onGenerateItem={handleGenerateItem}
-                onComplete={() => loadContents()}
             />
 
             {/* Delete Confirmation Modal */}
