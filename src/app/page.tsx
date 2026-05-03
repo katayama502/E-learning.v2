@@ -1,61 +1,75 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { GraduationCap, BookOpen, ShieldCheck, LogIn } from "lucide-react";
+import { GraduationCap, ArrowRight, BookOpen, Sparkles, Pencil } from "lucide-react";
 import { useAppStore } from "@/lib/appStore";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
-  const { authStatus } = useAppStore();
-  const isAuthenticated = authStatus === "authenticated";
+  const { authStatus, activeRole } = useAppStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (authStatus === "authenticated") {
+      router.replace(activeRole === "admin" ? "/admin" : "/reskill");
+    }
+  }, [authStatus, activeRole]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col items-center justify-center p-6">
-      <div className="w-full max-w-2xl text-center mb-10">
-        <div className="inline-flex w-16 h-16 bg-blue-100 rounded-2xl items-center justify-center text-blue-600 mb-4">
-          <GraduationCap size={36} />
+    <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-80 h-80 bg-amber-100 rounded-full blur-3xl opacity-60" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-sm text-center">
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          <div className="w-20 h-20 bg-orange-500 rounded-3xl flex items-center justify-center text-white shadow-xl shadow-orange-200">
+            <GraduationCap size={40} />
+          </div>
         </div>
-        <h1 className="text-3xl md:text-4xl font-black text-slate-800 mb-2">
-          e-ラーニング システム
+
+        <p className="text-xs font-black text-orange-500 uppercase tracking-widest mb-2">CREAT BUKATSU</p>
+        <h1 className="text-4xl font-black text-slate-900 tracking-tight mb-3 leading-tight">
+          クリエット部活
         </h1>
-        <p className="text-slate-500 font-bold">
-          コース・カリキュラム・レッスンを管理／受講できる学習プラットフォーム
+        <p className="text-slate-500 font-bold text-base mb-10">
+          やりたいを形に！
         </p>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
-        <Link
-          href="/reskill"
-          className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all"
-        >
-          <BookOpen className="text-blue-600 mb-3" size={28} />
-          <h2 className="font-black text-slate-800 mb-1">受講者ダッシュボード</h2>
-          <p className="text-sm text-slate-500 font-bold">
-            コース一覧・レッスン視聴
-          </p>
-        </Link>
+        {/* Features */}
+        <div className="space-y-3 mb-10 text-left">
+          {[
+            { icon: BookOpen, label: "コース動画で学ぶ", desc: "Canva・AI・プログラミング" },
+            { icon: Pencil, label: "振り返りで定着", desc: "学んだことを記録しよう" },
+            { icon: Sparkles, label: "つくる力を手に入れる", desc: "好きなことを形にしよう" },
+          ].map(({ icon: Icon, label, desc }) => (
+            <div key={label} className="flex items-center gap-4 bg-white rounded-2xl px-4 py-3 border border-slate-100 shadow-sm">
+              <div className="w-9 h-9 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 shrink-0">
+                <Icon size={18} />
+              </div>
+              <div>
+                <p className="font-black text-slate-800 text-sm">{label}</p>
+                <p className="text-slate-400 text-xs font-bold">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-        <Link
-          href="/admin/elearning"
-          className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg hover:border-blue-300 transition-all"
-        >
-          <ShieldCheck className="text-emerald-600 mb-3" size={28} />
-          <h2 className="font-black text-slate-800 mb-1">管理画面</h2>
-          <p className="text-sm text-slate-500 font-bold">
-            コース／カリキュラム／コンテンツ管理
-          </p>
-        </Link>
-      </div>
-
-      {!isAuthenticated && (
+        {/* CTA */}
         <Link
           href="/login"
-          className="mt-8 inline-flex items-center gap-2 bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition-all shadow-md"
+          className="w-full flex items-center justify-center gap-2 bg-orange-500 text-white font-black py-4 px-6 rounded-2xl shadow-xl shadow-orange-200 hover:bg-orange-600 hover:-translate-y-0.5 transition-all active:scale-[0.98] group"
         >
-          <LogIn size={18} />
-          ログイン
+          はじめる
+          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
         </Link>
-      )}
+
+        <p className="text-xs text-slate-300 font-bold mt-8">© 2026 クリエット部活</p>
+      </div>
     </main>
   );
 }
