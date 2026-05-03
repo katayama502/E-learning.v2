@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-    LayoutDashboard, BookOpen, Calendar, Users, BookHeart,
+    LayoutDashboard, BookOpen, BookHeart,
     LogOut, GraduationCap, Menu, X, ShieldCheck, ChevronRight,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/appStore';
@@ -12,8 +12,6 @@ import { useAppStore } from '@/lib/appStore';
 const navItems = [
     { name: 'ダッシュボード', icon: LayoutDashboard, href: '/reskill' },
     { name: 'コース一覧', icon: BookOpen, href: '/reskill/courses' },
-    { name: 'イベント', icon: Calendar, href: '/reskill/events' },
-    { name: '先生一覧', icon: Users, href: '/reskill/instructors' },
     { name: '振り返り', icon: BookHeart, href: '/reskill/reflections' },
 ];
 
