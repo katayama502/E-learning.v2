@@ -831,7 +831,7 @@ export async function fetchPublicReelsAction() {
                     entityType: type
                 },
                 organization: org,
-                entityName: org?.name || 'Ehime Base',
+                entityName: org?.name || 'クリエット部活',
                 entityId: item.organization_id || item.job_id || 'admin',
                 type: type,
                 companyId: item.organization_id

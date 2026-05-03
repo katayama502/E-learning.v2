@@ -12,7 +12,7 @@ export default function AdminTopPage() {
           管理画面
         </h1>
         <p className="text-slate-500 font-bold mb-8">
-          e-ラーニングのコース／カリキュラム／コンテンツを管理します
+          クリエット部活のコース・カリキュラム・コンテンツを管理します
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -43,7 +43,7 @@ export default function AdminTopPage() {
             </div>
             <div className="flex-1">
               <h2 className="font-black text-slate-800 mb-1 flex items-center gap-2">
-                e-ラーニング管理
+                コース管理
                 <ArrowRight size={16} className="text-slate-400" />
               </h2>
               <p className="text-sm text-slate-500 font-bold">

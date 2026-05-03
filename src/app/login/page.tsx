@@ -93,22 +93,22 @@ export default function LoginPage() {
                         <div className="w-10 h-10 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center">
                             <GraduationCap size={24} className="text-white" />
                         </div>
-                        <span className="text-white font-black text-xl tracking-tight">e-ラーニング</span>
+                        <span className="text-white font-black text-xl tracking-tight">クリエット部活</span>
                     </div>
                 </div>
 
                 <div className="relative z-10 space-y-4 hidden lg:block">
                     <h1 className="text-4xl font-black text-white leading-tight tracking-tight">
-                        学ぶことで、<br />未来を変えよう。
+                        やりたいを<br />形に！
                     </h1>
                     <p className="text-white/60 font-bold text-sm leading-relaxed">
-                        自分のペースで、どこからでも。<br />
-                        ITスキルからAIまで、幅広いカリキュラムを提供します。
+                        クリエット部活へようこそ。<br />
+                        ITスキルからAI・デザインまで、やりたいことを一緒に作ろう。
                     </p>
                 </div>
 
                 <p className="relative z-10 text-white/30 text-xs font-bold hidden lg:block">
-                    © 2026 e-ラーニングシステム
+                    © 2026 クリエット部活
                 </p>
             </div>
 

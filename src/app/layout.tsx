@@ -19,12 +19,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#2563eb",
+  themeColor: "#f97316",
 };
 
 export const metadata: Metadata = {
-  title: "e-ラーニング",
-  description: "e-ラーニングシステム（Ehime Base 抽出版）",
+  title: "クリエット部活",
+  description: "やりたいを形に！",
 };
 
 export default function RootLayout({

@@ -90,7 +90,7 @@ export default function SeekerLoginPage() {
                         <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white">
                             <span className="font-black text-xl">E</span>
                         </div>
-                        <span className="text-white font-black text-2xl tracking-tight">Ehime Base</span>
+                        <span className="text-white font-black text-2xl tracking-tight">クリエット部活</span>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@ export default function SeekerLoginPage() {
                 </div>
 
                 <div className="relative z-10 text-orange-100 text-sm font-bold hidden lg:block">
-                    © 2026 Ehime Base Project. All rights reserved.
+                    © 2026 クリエット部活
                 </div>
             </div>
 

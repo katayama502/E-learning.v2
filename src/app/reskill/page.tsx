@@ -381,7 +381,10 @@ export default function ReskillDashboardPage() {
                         <div className="bg-orange-500 p-2 rounded-xl text-white shadow-lg shadow-orange-50">
                             <BookOpen size={24} />
                         </div>
-                        <h1 className="text-xl font-black tracking-tighter text-slate-900">リスキル大学</h1>
+                        <div>
+                            <h1 className="text-xl font-black tracking-tighter text-slate-900 leading-none">クリエット部活</h1>
+                            <p className="text-[10px] font-bold text-orange-500 tracking-wide">やりたいを形に！</p>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -895,7 +898,7 @@ export default function ReskillDashboardPage() {
                                             )}
                                             {isAdminRecommended && (
                                                 <span className="bg-orange-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg border border-orange-400 flex items-center gap-1">
-                                                    <Award size={12} fill="currentColor" /> リスキル大学推奨
+                                                    <Award size={12} fill="currentColor" /> クリエット部活推奨
                                                 </span>
                                             )}
                                             {/* Progress Badge Merged Here */}
@@ -956,7 +959,7 @@ export default function ReskillDashboardPage() {
                                                             <img src="/eis_logo_mark.png" className="w-8 h-8 object-contain" alt="" />
                                                         </div>
                                                         <div>
-                                                            <p className="text-xs font-black text-slate-800 leading-none">Ehime Base</p>
+                                                            <p className="text-xs font-black text-slate-800 leading-none">クリエット部活</p>
                                                             <p className="text-[10px] font-bold text-slate-400 mt-0.5">Official Course</p>
                                                         </div>
                                                     </>

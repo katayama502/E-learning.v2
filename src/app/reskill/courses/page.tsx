@@ -173,7 +173,7 @@ export default function CoursesListPage() {
             <div className="bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-6 py-8 md:py-12 flex flex-col items-center text-center">
                     <div className="bg-orange-50 text-orange-500 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-orange-50 flex items-center gap-2">
-                        <GraduationCap size={14} /> リスキル大学
+                        <GraduationCap size={14} /> クリエット部活
                     </div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
                         愛媛で、一生モノの<br /><span className="text-orange-500">スキルを磨こう。</span>
@@ -325,7 +325,7 @@ export default function CoursesListPage() {
                             学びを、<br /><span className="text-orange-300 italic">スカウト</span>に繋げよう。
                         </h2>
                         <p className="text-slate-400 font-bold text-lg mb-8 leading-relaxed">
-                            リスキル大学での学習履歴は、企業に共有されます。特定のコースを完了した求職者には、企業から特別なオファーが届くかもしれません。
+                            クリエット部活での学習履歴は、企業に共有されます。特定のコースを完了した求職者には、企業から特別なオファーが届くかもしれません。
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-4 rounded-3xl">

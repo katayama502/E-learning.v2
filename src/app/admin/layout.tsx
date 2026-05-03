@@ -20,7 +20,7 @@ import AppLauncher from '@/components/AppLauncher';
 const sidebarItems = [
     { name: 'ダッシュボード', icon: LayoutDashboard, href: '/admin' },
     { name: 'アカウント管理', icon: Users, href: '/admin/users' },
-    { name: 'eラーニング管理', icon: GraduationCap, href: '/admin/elearning' },
+    { name: 'コース管理', icon: GraduationCap, href: '/admin/elearning' },
     { name: '振り返り管理', icon: BookHeart, href: '/admin/reflections' },
     { name: 'アクションログ', icon: Scroll, href: '/admin/audit' },
 ];

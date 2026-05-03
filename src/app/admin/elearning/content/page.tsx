@@ -389,7 +389,7 @@ export default function AdminContentPage() {
                         </span>
                     </h1>
                     <p className="text-slate-500 font-bold mt-2">
-                        eラーニングの動画コンテンツを管理します。
+                        クリエット部活のコンテンツを管理します。
                     </p>
                 </div>
                 <div className="flex gap-3">
