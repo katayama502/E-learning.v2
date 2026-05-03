@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { useAppStore } from '@/lib/appStore';
 import {
     PlayCircle, CheckCircle2, BookOpen, Clock,
-    TrendingUp, Award, ChevronRight, Layout,
+    TrendingUp, Award, ChevronRight,
     Zap, Star, ArrowRight, Layers, Play, X, Sparkles, Flame,
     Calendar, Users, MapPin, MonitorPlay, XCircle,
-    Map, ExternalLink, Code, Palette, Globe, Bot, Cpu, BookHeart
+    Map, ExternalLink, Code, Palette, Globe, Bot, Cpu
 } from 'lucide-react';
 import Link from 'next/link';
 import TrackRoadmapView from '@/components/reskill/TrackRoadmapView';
@@ -373,22 +373,7 @@ export default function ReskillDashboardPage() {
     const activeCourse = activeModule;
 
     return (
-        <div className="min-h-screen bg-slate-50 pb-20 w-full min-w-0 overflow-x-hidden">
-            {/* Header */}
-            <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <div className="bg-orange-500 p-2 rounded-xl text-white shadow-lg shadow-orange-50">
-                            <BookOpen size={24} />
-                        </div>
-                        <div>
-                            <h1 className="text-xl font-black tracking-tighter text-slate-900 leading-none">クリエット部活</h1>
-                            <p className="text-[10px] font-bold text-orange-500 tracking-wide">やりたいを形に！</p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
+        <div className="min-h-full bg-slate-50 w-full min-w-0 overflow-x-hidden">
             <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
                 {/* Stats Overview */}
                 {/* Stats Overview */}
@@ -978,31 +963,6 @@ export default function ReskillDashboardPage() {
                     </div>
                 </section>
             </main>
-
-            {/* Bottom Nav Hint (for mobile style feel) */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-xl px-2 py-2 rounded-2xl border border-slate-200 shadow-2xl z-50 flex gap-1">
-                <Link href="/reskill" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-black text-sm shadow-lg shadow-orange-50">
-                    <Layout size={18} /> Dashboard
-                </Link>
-                <Link href="/reskill/courses" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
-                    <BookOpen size={18} /> Courses
-                </Link>
-                <Link href="/reskill/events" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
-                    <Calendar size={18} /> Events
-                </Link>
-                <Link href="/reskill/instructors" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
-                    <Users size={18} /> Teachers
-                </Link>
-                <Link href="/reskill/reflections" className="flex items-center gap-2 px-6 py-3 rounded-xl text-slate-400 hover:text-slate-600 font-black text-sm transition-colors">
-                    <BookHeart size={18} /> 振り返り
-                </Link>
-                {(activeRole === 'admin' || activeRole === 'instructor') && (
-                    <Link href="/reskill/management/participants" className="flex items-center gap-2 px-6 py-3 rounded-xl text-amber-600 hover:text-amber-700 font-black text-sm transition-colors">
-                        <Users size={18} /> Management
-                    </Link>
-                )}
-            </div>
-
 
         </div>
     );

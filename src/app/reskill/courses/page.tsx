@@ -168,7 +168,7 @@ export default function CoursesListPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 pb-20 overflow-x-hidden w-full max-w-full">
+        <div className="min-h-screen bg-slate-50  overflow-x-hidden w-full max-w-full">
             {/* Header Section */}
             <div className="bg-white border-b border-slate-200">
                 <div className="max-w-7xl mx-auto px-6 py-8 md:py-12 flex flex-col items-center text-center">
