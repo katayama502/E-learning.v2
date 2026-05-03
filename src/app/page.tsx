@@ -12,9 +12,9 @@ export default function HomePage() {
 
   useEffect(() => {
     if (authStatus === "authenticated") {
-      router.replace(activeRole === "admin" ? "/admin" : "/reskill");
+      router.replace("/reskill");
     }
-  }, [authStatus, activeRole]);
+  }, [authStatus]);
 
   return (
     <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 relative overflow-hidden">
