@@ -5,7 +5,7 @@ import { useAppStore } from '@/lib/appStore';
 import {
     BookOpen, Search, Filter, Clock, ChevronRight,
     ChevronLeft, ArrowRight, GraduationCap,
-    Lightbulb, Layout as LayoutIcon, ArrowUpDown
+    Layout as LayoutIcon, ArrowUpDown
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -315,30 +315,6 @@ export default function CoursesListPage() {
                     </div>
                 )}
 
-                {/* Info Card */}
-                <section className="bg-slate-900 rounded-[3rem] p-10 md:p-16 relative overflow-hidden text-white shadow-2xl">
-                    <div className="absolute right-[-5%] top-[-5%] text-white/5 rotate-12">
-                        <Lightbulb size={300} />
-                    </div>
-                    <div className="relative z-10 max-w-2xl">
-                        <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight tracking-tight">
-                            学びを、<br /><span className="text-orange-300 italic">スカウト</span>に繋げよう。
-                        </h2>
-                        <p className="text-slate-400 font-bold text-lg mb-8 leading-relaxed">
-                            クリエット部活での学習履歴は、企業に共有されます。特定のコースを完了した求職者には、企業から特別なオファーが届くかもしれません。
-                        </p>
-                        <div className="flex flex-wrap gap-4">
-                            <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-4 rounded-3xl">
-                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest mb-1">Benefit 1</p>
-                                <p className="font-black">スキルの可視化</p>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-md border border-white/10 px-6 py-4 rounded-3xl">
-                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest mb-1">Benefit 2</p>
-                                <p className="font-black">スカウト率の向上</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </main>
 
             {/* Navigation Buttons for switching back */}
