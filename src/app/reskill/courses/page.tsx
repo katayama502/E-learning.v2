@@ -176,11 +176,11 @@ export default function CoursesListPage() {
                         <GraduationCap size={14} /> クリエット部活
                     </div>
                     <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 leading-tight">
-                        愛媛で、一生モノの<br /><span className="text-orange-500">スキルを磨こう。</span>
+                        やりたいことを、<br /><span className="text-orange-500">形にしよう。</span>
                     </h1>
                     <p className="max-w-2xl text-slate-500 font-bold text-sm md:text-base leading-relaxed">
-                        地域DX、ITエンジニアリング、ビジネスマナーまで。<br className="hidden md:block" />
-                        地元の企業の「今」必要としているスキルを体系的に学びます。
+                        Canva・プログラミング・AIまで、好きなことを学んで<br className="hidden md:block" />
+                        自分だけの「つくる力」を手に入れよう。
                     </p>
                 </div>
             </div>
