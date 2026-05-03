@@ -21,6 +21,7 @@ import { useAppStore } from '@/lib/appStore';
 const sidebarItems = [
     { name: 'ダッシュボード', icon: LayoutDashboard, href: '/admin' },
     { name: 'アカウント管理', icon: Users, href: '/admin/users' },
+    { name: 'コース管理', icon: GraduationCap, href: '/admin/elearning' },
     { name: 'カリキュラム管理', icon: Layers, href: '/admin/curricula' },
     { name: 'コンテンツ管理', icon: Film, href: '/admin/content' },
     { name: '振り返り管理', icon: BookHeart, href: '/admin/reflections' },
