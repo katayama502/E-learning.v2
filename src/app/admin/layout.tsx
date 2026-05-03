@@ -13,14 +13,16 @@ import {
     GraduationCap,
     Scroll,
     BookHeart,
+    Layers,
+    Film,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/appStore';
-import AppLauncher from '@/components/AppLauncher';
 
 const sidebarItems = [
     { name: 'ダッシュボード', icon: LayoutDashboard, href: '/admin' },
     { name: 'アカウント管理', icon: Users, href: '/admin/users' },
-    { name: 'コース管理', icon: GraduationCap, href: '/admin/elearning' },
+    { name: 'カリキュラム管理', icon: Layers, href: '/admin/curricula' },
+    { name: 'コンテンツ管理', icon: Film, href: '/admin/content' },
     { name: '振り返り管理', icon: BookHeart, href: '/admin/reflections' },
     { name: 'アクションログ', icon: Scroll, href: '/admin/audit' },
 ];
@@ -160,7 +162,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </div>
 
                 <div className="p-4 border-t border-slate-800 space-y-1">
-                    <AppLauncher currentApp="ehime-base-admin" />
                     <button
                         onClick={handleLogout}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all text-left"
