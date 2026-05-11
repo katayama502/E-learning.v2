@@ -326,7 +326,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                             <div className="flex-1">
                                 <h2 className="text-3xl font-black text-white mb-4 tracking-tight">{lesson.title}</h2>
-                                <p className="text-slate-400 font-medium leading-relaxed">
+                                <p className="text-slate-300 text-lg leading-relaxed">
                                     {lesson.description || '説明はありません。'}
                                 </p>
                             </div>
@@ -339,7 +339,7 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                         }`}
                                 >
                                     {isLessonCompleted(lesson.id) ? <CheckCircle2 size={20} /> : null}
-                                    {isLessonCompleted(lesson.id) ? '完了済み' : '完了にする'}
+                                    {isLessonCompleted(lesson.id) ? '完了済み ✓' : '完了にする ✓'}
                                     {showCelebration && (
                                         <div className="absolute inset-0 bg-white/20 animate-ping" />
                                     )}
@@ -354,6 +354,25 @@ export default function LessonPlayerPage({ params }: { params: Promise<{ id: str
                                 )}
                             </div>
                         </div>
+
+                        {/* Scratch Embed */}
+                        {lesson.scratch_project_id && (
+                            <div className="bg-slate-900 rounded-[2rem] p-8 border border-white/5">
+                                <h3 className="text-lg font-black text-white mb-4">🐱 Scratchで試してみよう！</h3>
+                                <div className="rounded-2xl overflow-hidden bg-black" style={{ aspectRatio: '485/402' }}>
+                                    <iframe
+                                        src={`https://scratch.mit.edu/projects/${lesson.scratch_project_id}/embed`}
+                                        width="100%"
+                                        height="100%"
+                                        allowTransparency={true}
+                                        frameBorder="0"
+                                        scrolling="no"
+                                        allowFullScreen
+                                        className="w-full h-full"
+                                    />
+                                </div>
+                            </div>
+                        )}
 
                         {/* Interactive Tabs/Sections */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
