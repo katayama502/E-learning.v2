@@ -16,6 +16,7 @@ type Lesson = {
     duration: string | null;
     order_index: number;
     curriculum_id: string;
+    scratch_project_id: string | null;
     module_title?: string;
     track_title?: string;
 };
@@ -29,9 +30,10 @@ type FormState = {
     youtube_url: string;
     duration: string;
     curriculum_id: string;
+    scratch_project_id: string;
 };
 
-const EMPTY_FORM: FormState = { title: '', description: '', youtube_url: '', duration: '', curriculum_id: '' };
+const EMPTY_FORM: FormState = { title: '', description: '', youtube_url: '', duration: '', curriculum_id: '', scratch_project_id: '' };
 
 export default function ContentPage() {
     const supabase = createClient();
@@ -53,7 +55,7 @@ export default function ContentPage() {
         const [{ data: tracksData }, { data: modulesData }, { data: lessonsData }] = await Promise.all([
             supabase.from('courses').select('id, title').order('order_index'),
             supabase.from('course_curriculums').select('id, title, course_id').order('order_index'),
-            supabase.from('course_lessons').select('id, title, description, youtube_url, duration, order_index, curriculum_id').order('curriculum_id, order_index'),
+            supabase.from('course_lessons').select('id, title, description, youtube_url, duration, order_index, curriculum_id, scratch_project_id').order('curriculum_id, order_index'),
         ]);
 
         const trackMap = Object.fromEntries((tracksData || []).map(t => [t.id, t.title]));
@@ -97,6 +99,7 @@ export default function ContentPage() {
             youtube_url: data.youtube_url || '',
             duration: data.duration || '',
             curriculum_id: data.curriculum_id,
+            scratch_project_id: data.scratch_project_id || '',
         } : EMPTY_FORM);
     };
 
@@ -120,6 +123,7 @@ export default function ContentPage() {
                     youtube_url: form.youtube_url || null,
                     duration: form.duration || null,
                     curriculum_id: form.curriculum_id,
+                    scratch_project_id: form.scratch_project_id || null,
                     order_index: (count || 0) + 1,
                 });
                 if (error) throw error;
@@ -131,6 +135,7 @@ export default function ContentPage() {
                     youtube_url: form.youtube_url || null,
                     duration: form.duration || null,
                     curriculum_id: form.curriculum_id,
+                    scratch_project_id: form.scratch_project_id || null,
                 }).eq('id', modal.data!.id);
                 if (error) throw error;
                 toast.success('レッスンを更新しました');
@@ -406,6 +411,33 @@ export default function ContentPage() {
                                     placeholder="例：12分"
                                     className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl font-bold text-slate-800 outline-none focus:border-orange-300 transition-all"
                                 />
+                            </div>
+
+                            {/* Scratch Project ID */}
+                            <div>
+                                <label className="text-sm font-black text-slate-700 block mb-1.5">
+                                    Scratch プロジェクトID
+                                    <span className="ml-2 text-[10px] font-bold text-slate-400 normal-case">（任意）</span>
+                                </label>
+                                <input
+                                    type="text" value={form.scratch_project_id} onChange={e => setForm(f => ({ ...f, scratch_project_id: e.target.value }))}
+                                    placeholder="例：123456789"
+                                    className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 rounded-xl font-bold text-slate-800 outline-none focus:border-orange-300 transition-all"
+                                />
+                                {form.scratch_project_id && (
+                                    <div className="mt-2 rounded-xl overflow-hidden bg-slate-100" style={{ aspectRatio: '485/402' }}>
+                                        <iframe
+                                            src={`https://scratch.mit.edu/projects/${form.scratch_project_id}/embed`}
+                                            width="100%"
+                                            height="100%"
+                                            allowTransparency={true}
+                                            frameBorder="0"
+                                            scrolling="no"
+                                            allowFullScreen
+                                            className="w-full h-full"
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div className="flex gap-3 p-6 pt-0 sticky bottom-0 bg-white rounded-b-3xl">

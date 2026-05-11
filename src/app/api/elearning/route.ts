@@ -23,7 +23,7 @@ export async function GET() {
                 *,
                 curriculums: course_curriculums(
                     *,
-                    lessons: course_lessons(id, title, duration, youtube_url, thumbnail_url, type, curriculum_id)
+                    lessons: course_lessons(id, title, duration, youtube_url, thumbnail_url, type, curriculum_id, scratch_project_id)
                 )
             `)
             .order('order_index', { ascending: true })

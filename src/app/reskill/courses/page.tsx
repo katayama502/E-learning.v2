@@ -158,13 +158,13 @@ export default function CoursesListPage() {
             }
         });
 
-    const getProgress = (courseId: string) => {
+    const getLessonProgress = (courseId: string) => {
         const course = courses.find(c => c.id === courseId);
-        if (!course) return 0;
+        if (!course) return { completed: 0, total: 0, pct: 0 };
         const allLessons = course.lessons || course.curriculums?.flatMap((curr: any) => curr.lessons) || [];
-        if (allLessons.length === 0) return 0;
+        if (allLessons.length === 0) return { completed: 0, total: 0, pct: 0 };
         const completed = allLessons.filter((l: any) => completedLessonIds.includes(l.id)).length;
-        return Math.round((completed / allLessons.length) * 100);
+        return { completed, total: allLessons.length, pct: Math.round((completed / allLessons.length) * 100) };
     };
 
     return (
@@ -236,7 +236,7 @@ export default function CoursesListPage() {
                 {/* Courses Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredCourses.map((course: any) => {
-                        const progress = getProgress(course.id);
+                        const { completed, total, pct } = getLessonProgress(course.id);
                         // APIから直接totalDurationを使用
                         const durationDisplay = course.totalDuration || '0分';
                         return (
@@ -265,9 +265,9 @@ export default function CoursesListPage() {
                                     <div>
                                         <div className="flex items-center justify-between mb-3">
                                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{course.level}</span>
-                                            {progress > 0 && (
-                                                <span className="text-emerald-500 text-[10px] font-black flex items-center gap-1">
-                                                    学習中: {progress}%
+                                            {pct > 0 && (
+                                                <span className="text-emerald-500 text-[10px] font-black">
+                                                    {completed}/{total} 完了
                                                 </span>
                                             )}
                                         </div>
@@ -277,6 +277,16 @@ export default function CoursesListPage() {
                                         <p className="text-sm text-slate-500 font-medium line-clamp-2">
                                             {course.description}
                                         </p>
+                                        {pct > 0 && (
+                                            <div className="mt-4">
+                                                <div className="w-full bg-slate-100 rounded-full h-2">
+                                                    <div
+                                                        className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
+                                                        style={{ width: `${pct}%` }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
